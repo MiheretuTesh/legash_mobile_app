@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import COLORS from '../../constants/colors';
 import {
-  HomeScreenStack,
+  HomeStack,
   HistoryScreenStack,
   ProfileScreenStack,
   LoginStack,
@@ -20,24 +20,22 @@ export default HomeScreen = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeTab"
-      screenOptions={
-        (({route}) => ({}),
-        {
-          headerShown: false,
-          tabBarHideOnKeyboard: true,
-          tabBarActiveTintColor: COLORS.tabActive,
-          tabBarInactiveTintColor: COLORS.tabBar,
-          tabBarStyle: [
-            {
-              display: 'flex',
-            },
-            null,
-          ],
-        })
-      }>
+      screenOptions={({route}) => ({
+        // <-- Remove extra parentheses
+        headerShown: false,
+        tabBarHideOnKeyboard: true,
+        tabBarActiveTintColor: COLORS.tabActive,
+        tabBarInactiveTintColor: COLORS.tabBar,
+        tabBarStyle: [
+          {
+            display: 'flex',
+          },
+          null,
+        ],
+      })}>
       <Tab.Screen
         name="HomeTab"
-        component={HomeScreenStack}
+        component={HomeStack}
         options={{
           headerShown: false,
           tabBarLabel: 'Home',
@@ -52,7 +50,7 @@ export default HomeScreen = () => {
         }}
       />
       <Tab.Screen
-        name="History"
+        name="HistoryTab"
         component={HistoryScreenStack}
         options={{
           headerShown: false,
@@ -68,7 +66,7 @@ export default HomeScreen = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="ProfileTab"
         component={ProfileScreenStack}
         options={{
           headerShown: false,

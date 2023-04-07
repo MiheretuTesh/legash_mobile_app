@@ -1,4 +1,3 @@
-//import liraries
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -10,7 +9,7 @@ const ProfilePage = React.lazy(() => import('../../pages/ProfileScreen'));
 const HistoryPage = React.lazy(() => import('../../pages/HistoryScreen'));
 const HomePage = React.lazy(() => import('../../pages/HomeScreen'));
 const DetailsPage = React.lazy(() => import('../../pages/DetailsScreen'));
-// Create stack navigator
+
 const Stack = createStackNavigator();
 
 const HomeScreenStack = () => {
@@ -23,7 +22,21 @@ const HomeScreenStack = () => {
         headerBackTitle: 'Back',
       }}>
       <Stack.Screen name="HomeScreen" component={HomePage} />
-      <Stack.Screen name="Details" component={DetailsPage} />
+      <Stack.Screen name="DetailsScreen" component={DetailsPage} />
+    </Stack.Navigator>
+  );
+};
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="DetailsScreen"
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'white',
+        headerBackTitle: 'Back',
+      }}>
+      <Stack.Screen name="DetailsScreen" component={HomePage} />
     </Stack.Navigator>
   );
 };
@@ -36,8 +49,8 @@ const HistoryScreenStack = () => {
         headerTintColor: 'white',
         headerBackTitle: 'Back',
       }}>
-      <Stack.Screen name="History" component={HistoryPage} />
-      {/* <Stack.Screen name="Register" component={RegisterForm} /> */}
+      <Stack.Screen name="HistoryScreen" component={HistoryPage} />
+      <Stack.Screen name="DetailsScreen" component={DetailsPage} />
     </Stack.Navigator>
   );
 };
@@ -50,8 +63,7 @@ const ProfileScreenStack = () => {
         headerTintColor: 'white',
         headerBackTitle: 'Back',
       }}>
-      <Stack.Screen name="Profile" component={ProfilePage} />
-      {/* <Stack.Screen name="Register" component={ProfileDetailsForm} /> */}
+      <Stack.Screen name="ProfileScreen" component={ProfilePage} />
     </Stack.Navigator>
   );
 };
@@ -64,8 +76,7 @@ const LoginStack = () => {
         headerTintColor: 'white',
         headerBackTitle: 'Back',
       }}>
-      <Stack.Screen name="Login" component={LoginPage} />
-      {/* <Stack.Screen name="Register" component={RegisterForm} /> */}
+      <Stack.Screen name="LoginScreen" component={LoginPage} />
     </Stack.Navigator>
   );
 };
@@ -78,12 +89,13 @@ const RegisterStack = () => {
         headerTintColor: 'white',
         headerBackTitle: 'Back',
       }}>
-      <Stack.Screen name="Register" component={RegisterPage} />
+      <Stack.Screen name="RegisterScreen" component={RegisterPage} />
     </Stack.Navigator>
   );
 };
 
 export {
+  HomeStack,
   HomeScreenStack,
   HistoryScreenStack,
   ProfileScreenStack,

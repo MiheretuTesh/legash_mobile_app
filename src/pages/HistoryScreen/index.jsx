@@ -1,25 +1,32 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, ScrollView, Pressable} from 'react-native';
 import HistoryCard from '../../components/HistoryCard';
+import {styles} from './index.style';
+import Patients from '../../constants/Patients';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 // create a component
-const HistoryPage = () => {
+const HistoryPage = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <HistoryCard />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View>
+          {Patients.map((patient, index) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('DetailsScreen', {patientData: patient});
+              }}
+              key={index}
+              style={{marginVertical: 10}}>
+              <HistoryCard patient={patient} />
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
 
 //make this component available to the app
 export default HistoryPage;

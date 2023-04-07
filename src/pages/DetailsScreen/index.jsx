@@ -1,25 +1,20 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import Details from '../../components/Details';
+import {styles} from './index.style';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 // create a component
-const DetailsPage = () => {
+const DetailsPage = ({navigation, route}) => {
+  const {patientData} = route.params;
   return (
-    <View style={styles.container}>
-      <Details />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Details patientData={patientData} />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#2c3e50',
-  },
-});
 
 //make this component available to the app
 export default DetailsPage;

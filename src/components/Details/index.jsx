@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View, Text, ImageBackground} from 'react-native';
 import {styles} from './index.style';
 import {useNavigation} from '@react-navigation/native';
@@ -7,9 +7,23 @@ import CLoseIcon from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import DonateButton from '../DonateButton';
+import DonatePopUp from '../DonatePopUp';
 
 const Details = ({patientData}) => {
+  const refRBSheet = useRef();
   const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.getParent()?.setOptions({
+      tabBarStyle: {
+        display: 'none',
+      },
+    });
+    return () =>
+      navigation.getParent()?.setOptions({
+        tabBarStyle: undefined,
+      });
+  }, [navigation]);
 
   return (
     <View>
@@ -79,7 +93,11 @@ const Details = ({patientData}) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <TouchableOpacity>
+        <DonatePopUp refRBSheet={refRBSheet} />
+        <TouchableOpacity
+          onPress={() => {
+            refRBSheet.current.open();
+          }}>
           <DonateButton />
         </TouchableOpacity>
       </View>

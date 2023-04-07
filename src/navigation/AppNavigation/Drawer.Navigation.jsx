@@ -1,5 +1,5 @@
+import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import React, {Component} from 'react';
 import HomeScreen from './Tab.Navigation';
 import CustomDrawer from '../../components/CustomDrawer';
 import {Button, View, Text} from 'react-native';
@@ -12,7 +12,6 @@ import {
 } from './Stack';
 import COLORS from '../../constants/colors';
 
-// create a component
 const Drawer = createDrawerNavigator();
 
 const AppDrawer = () => {
@@ -28,8 +27,7 @@ const AppDrawer = () => {
         drawerActiveTintColor: COLORS.whiteColor,
         drawerInactiveTintColor: COLORS.txtColor,
         drawerLabelStyle: {
-          //   marginLeft: -25,
-          fontFamily: 'Roboto-Medium',
+          fontWeight: 'bold',
           fontSize: 15,
         },
       }}
@@ -42,5 +40,4 @@ const AppDrawer = () => {
   );
 };
 
-//make this component available to the app
 export default AppDrawer;

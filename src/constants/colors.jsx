@@ -4,6 +4,8 @@ export default COLORS = {
   redColor: '#FF7468',
   txtColor: '#000000',
   mainColor: '#5DADAA',
-  greyColor: '#D9D9D9',
+  greyColor: '#8D8D8D',
   whiteColor: '#FFFFFF',
+  screenColor: '#ebe8e8',
+  separatorColor: '#DADADA',
 };

@@ -10,10 +10,6 @@ import {
 
 import AppDrawer from './Drawer.Navigation';
 
-// Screens for Tab navigation
-const Dashboard = React.lazy(() => import('../../components/Dashboard'));
-
-
 const AppNavigation = () => {
   return (
     <NavigationContainer>

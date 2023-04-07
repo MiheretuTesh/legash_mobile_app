@@ -22,7 +22,15 @@ const HomeScreenStack = () => {
         headerBackTitle: 'Back',
       }}>
       <Stack.Screen name="HomeScreen" component={HomePage} />
-      <Stack.Screen name="DetailsScreen" component={DetailsPage} />
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsPage}
+        options={() => {
+          return {
+            tabBarVisible: false,
+          };
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -36,7 +44,15 @@ const HomeStack = () => {
         headerTintColor: 'white',
         headerBackTitle: 'Back',
       }}>
-      <Stack.Screen name="DetailsScreen" component={HomePage} />
+      <Stack.Screen
+        name="DetailsScreen"
+        component={HomePage}
+        options={() => {
+          return {
+            tabBarVisible: false,
+          };
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -50,7 +66,15 @@ const HistoryScreenStack = () => {
         headerBackTitle: 'Back',
       }}>
       <Stack.Screen name="HistoryScreen" component={HistoryPage} />
-      <Stack.Screen name="DetailsScreen" component={DetailsPage} />
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsPage}
+        options={() => {
+          return {
+            tabBarVisible: false,
+          };
+        }}
+      />
     </Stack.Navigator>
   );
 };

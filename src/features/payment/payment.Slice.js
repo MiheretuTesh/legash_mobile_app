@@ -44,7 +44,6 @@ export const createPayment = createAsyncThunk(
           'x-access-token': token ? `Bearer ${token}` : null,
         },
       });
-      console.log(data, 'response from the create payment');
 
       return data;
     } catch (err) {

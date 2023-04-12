@@ -14,7 +14,7 @@ const HistoryCard = ({ patient, title }) => {
         style={styles.historyCardImg}
       />
       <View style={styles.historyCardContent}>
-        <Text style={styles.historyCardHeroTxt}>{title}</Text>
+        <Text style={styles.historyCardHeroTxt}>{patient.campaignTitle}</Text>
         <View style={styles.progressContainer}>
           <View
             style={{
@@ -69,7 +69,7 @@ const HistoryCard = ({ patient, title }) => {
           <View>
             <Text style={styles.cardFooterTitle}>Raised</Text>
             <Text style={styles.cardFooterAmountActive}>
-              {patient.currentFundedAmount.toLocaleString('en-US')} birr
+              {patient.currentFundedAmount?.toLocaleString('en-US')} birr
             </Text>
           </View>
           <View style={styles.separator}></View>

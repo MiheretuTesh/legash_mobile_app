@@ -28,14 +28,12 @@ export const getCurrentUserTransaction = createAsyncThunk(
       const token = await getToken();
       const { data } = await axios.get(
         `https://legashfund.onrender.com/api/v1/transactions/history`,
-
         {
           headers: {
             Authorization: token ? `Bearer ${token}` : null,
           },
         }
       );
-      console.log(data?.data, 'Current Transaction');
       return data;
     } catch (err) {
       console.log(err);

@@ -30,12 +30,17 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
 });
 
+function generateRandomAlphabet() {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  var randomIndex = Math.floor(Math.random() * alphabet.length);
+  var randomAlphabet = alphabet.charAt(randomIndex);
+  return randomAlphabet;
+}
+
 const ChapaCheckoutScreen = ({ route }) => {
   const dispatch = useDispatch();
 
   const { campaignData } = route.params;
-
-  console.log(campaignData, 'campaignData campaignData');
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -44,7 +49,6 @@ const ChapaCheckoutScreen = ({ route }) => {
   const { userDataLoading, userDataSuccess, userDataFailed, userData } =
     useSelector((state) => state.user);
 
-  console.log(userData, 'userData userData userData');
   const checkoutUrl =
     'https://checkout.chapa.co/checkout/payment/eB8TJqjMFsMnZH2u222vJOh7nef0BHXyqMcjNsc6wx2RU';
   const [isVisible, setIsVisible] = useState(false);
@@ -80,17 +84,7 @@ const ChapaCheckoutScreen = ({ route }) => {
   };
   useEffect(() => {
     if (paymentUri !== null) {
-      const temp = {
-        data: null,
-        message: 'Transaction reference has been used before',
-        status: 'failed',
-      };
-      const { message, status, data } = paymentUri;
-      // const { checkout_url } = data;
-      console.log(data?.checkout_url, 'Payment Uril Generated');
-      paymentUriValue = paymentUri;
     }
-    // console.log(paymentUriValue, 'paymentUriValue Payment Uril Generated');
   }, [paymentUri]);
 
   const handleOpenModal = async () => {
@@ -104,29 +98,33 @@ const ChapaCheckoutScreen = ({ route }) => {
       currency: currency,
     };
 
+    var randomLetter = generateRandomAlphabet();
+
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       const nameValue = name.split(' ');
       const first_name = nameValue[0];
       const last_name = nameValue[1];
-      // const chapaPaymentUri = chapaPay(
-      //   first_name,
-      //   last_name,
-      //   amount,
-      //   email,
-      //   phone,
-      //   setPaymentUri
-      // );
+      const chapaPaymentUri = chapaPay(
+        first_name,
+        last_name,
+        amount,
+        email,
+        phone,
+        randomLetter,
+        setPaymentUri
+      );
 
-      // setIsVisible(true);
+      setIsVisible(true);
 
       const paymentData = {
         campaignId: campaignId,
         amount: amount,
         transactionType: 'donation',
         paymentMethod: 'Express Fund',
-        donorId: donorId,
+        donorId: userData._id,
       };
+      console.log(paymentData, 'paymentData');
       dispatch(createPayment(paymentData));
     } catch (validationErrors) {
       const newErrors = {};
@@ -278,7 +276,7 @@ const ChapaCheckoutScreen = ({ route }) => {
                 <WebView
                   source={{
                     uri: paymentUri?.data?.checkout_url
-                      ? aymentUri?.data?.checkout_url
+                      ? paymentUri?.data?.checkout_url
                       : checkoutUrl,
                   }}
                   onLoadSuccess={onWebViewLoaded}

@@ -23,7 +23,47 @@ const HistoryDetails = ({ donationData }) => {
     'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
   ];
 
-  console.log(donationData);
+  const temp = {
+    __v: 0,
+    _id: '648aedbaca3c81a87cefb838',
+    amount: 499,
+    campaignId: '648a97fb9b932f254f247180',
+    createdAt: '2023-06-15T10:53:46.628Z',
+    donorId: {
+      __v: 0,
+      _id: '648ae493ca3c81a87cefb514',
+      accountStatus: 'Active',
+      am_et: {
+        firstName: 'ትግስት',
+        gender: 'ወንድ',
+        lastName: 'ለማ',
+      },
+      createdAt: '2023-06-15T10:14:43.803Z',
+      dateOfBirth: '2023-06-14T10:13:44.000Z',
+      email: 'yakim5775@gmail.com',
+      en_us: {
+        bankAccounts: [Array],
+        firstName: 'Yakim',
+        gender: 'Male',
+        lastName: 'Miller',
+      },
+      firebaseUserId: 'PfBMlV0stOT4foTXXV6Qe47keHw1',
+      notification: [],
+      occupation: {
+        _id: '648afd65ca3c81a87cefbebd',
+        occupationType: 'Patient',
+        workPlaceId: '648ac94a94950b32839332ba',
+      },
+      phonenumber: '0943216789',
+      role: '645e46d74c3d647470f67dfa',
+      updatedAt: '2023-06-15T10:14:43.803Z',
+    },
+    paymentMethod: 'Express Fund',
+    transactionType: 'donation',
+  };
+  7;
+
+  console.log(donationData?.donorId.en_us);
 
   useEffect(() => {
     navigation.getParent()?.setOptions({
@@ -48,133 +88,159 @@ const HistoryDetails = ({ donationData }) => {
           <CloseIcon name="close" size={20} color={'black'} />
         </TouchableOpacity>
       </View>
-      <View>
-        <ImageBackground
-          source={{
-            uri: 'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80'
-              ? 'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80'
-              : 'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80',
-          }}
-          style={styles.backgroundImg}
-        >
-          {/* <View style={styles.backgroundImgView}>
-            {donationData.images.length > 0
-              ? donationData.images.map((image, index) => {
-                  const currentIndex = imageIndex; // Declare a separate variable
-                  return (
-                    <TouchableOpacity
-                      key={index}
-                      onPress={() => {
-                        setImageIndex(index);
-                        setBackgroundImage(image);
-                      }}
-                    >
-                      <Image
-                        source={{ uri: image }}
-                        style={{
-                          width: 60,
-                          height: 60,
-                          borderRadius: 10,
-                          borderWidth: currentIndex === index ? 3 : 0,
-                          borderColor:
-                            currentIndex === index && COLORS.mainColor,
-                          elevation: 10,
-                        }}
-                      />
-                    </TouchableOpacity>
-                  );
-                })
-              : imgs.map((image, index) => {
-                  return (
-                    <TouchableOpacity
-                      key={index}
-                      onPress={() => {
-                        setImageIndex(index);
-                        setBackgroundImage(image);
-                      }}
-                    >
-                      <Image
-                        source={{ uri: image }}
-                        style={{
-                          width: 60,
-                          height: 60,
-                          borderRadius: 10,
-                          borderWidth: imageIndex === index ? 3 : 0,
-                          borderColor: imageIndex === index && COLORS.mainColor,
-                          elevation: 10,
-                        }}
-                      />
-                    </TouchableOpacity>
-                  );
-                })}
-          </View> */}
-        </ImageBackground>
-      </View>
 
       <View style={{ height: 20 }}></View>
 
       <View>
-        <Text style={styles.heroTxt}>Campaign Status</Text>
+        <Text style={styles.heroTxt}>Donation History</Text>
+        <Text style={styles.heroTxt}>Transaction</Text>
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: 'column',
             justifyContent: 'space-between',
-            alignItems: 'center',
           }}
         >
-          <View style={styles.txtContainer}>
-            <Text
-              style={{ color: COLORS.greyColor, fontWeight: 500, fontSize: 16 }}
-            >
-              Total Amount
-            </Text>
-            <Text
-              style={{ color: COLORS.mainColor, fontWeight: 500, fontSize: 18 }}
-            >
-              {donationData.amount.toLocaleString('en-US')} birr
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 40,
-              backgroundColor: COLORS.greyColor,
-              width: 0.5,
-            }}
-          ></View>
-          <View style={styles.txtContainer}>
-            <Text
-              style={{ color: COLORS.greyColor, fontWeight: 500, fontSize: 16 }}
-            >
-              Raised Amount
-            </Text>
-            <Text
-              style={{ color: COLORS.mainColor, fontWeight: 500, fontSize: 18 }}
-            >
-              {donationData.amount.toLocaleString('en-US')} birr
-            </Text>
-          </View>
-          <View
-            style={{
-              height: 40,
-              backgroundColor: COLORS.greyColor,
-              width: 0.5,
-            }}
-          ></View>
-
-          <View style={styles.txtContainer}>
-            <Text
-              style={{ color: COLORS.greyColor, fontWeight: 500, fontSize: 16 }}
-            >
-              To Go
-            </Text>
-            <Text
-              style={{ color: COLORS.redColor, fontWeight: 500, fontSize: 18 }}
-            >
-              {(donationData.amount - donationData.amount).toLocaleString(
-                'en-US'
-              )}{' '}
-              birr
-            </Text>
+          <View style={{ display: 'flex', flexDirection: 'row' }}>
+            <View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Donors Name
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  የለጋሹ ስም
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Phone Number
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Email
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+            </View>
+            <View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.en_us.firstName} ${donationData?.donorId.en_us.lastName}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.am_et.firstName} ${donationData?.donorId.am_et.lastName}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.phonenumber}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.email}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+            </View>
           </View>
         </View>
       </View>
@@ -182,61 +248,143 @@ const HistoryDetails = ({ donationData }) => {
       <View style={{ height: 20 }}></View>
 
       <View>
-        <Text style={styles.heroTxt}>Contact Information</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text
-            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
-          >
-            Name - Abebe Chala
-          </Text>
-          <Text
-            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
-          >
-            {donationData?.contactName}
-          </Text>
-        </View>
-        <View style={{ flexDirection: 'row' }}>
-          <Text
-            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
-          >
-            Contact -0912211221
-          </Text>
-          <Text
-            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
-          >
-            {donationData?.contactPhoneNumber}
-          </Text>
-        </View>
-      </View>
-
-      <View style={{ height: 20 }}></View>
-
-      <View>
-        <Text style={styles.heroTxt}>Description</Text>
-        <Text
-          style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
-        >
-          {/* {donationData?.diagnosis[0]} */}
-        </Text>
-      </View>
-      <View style={{ height: 20 }}></View>
-      {/* <View
-        style={{
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <DonatePopUp refRBSheet={refRBSheet} />
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={() => {
-            refRBSheet.current.open();
+        <Text style={styles.heroTxt}>Campaigns Details</Text>
+        <Text style={styles.heroTxt}>Campaign</Text>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
-          <DonateButton />
-        </TouchableOpacity>
-      </View> */}
+          <View style={{ display: 'flex', flexDirection: 'row' }}>
+            <View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Amount
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Phone Number
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Email
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+            </View>
+            <View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.amount} Birr`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.am_et.firstName} ${donationData?.donorId.am_et.lastName}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.phonenumber}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {`${donationData?.donorId.email}`}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      <View style={{ height: 20 }}></View>
     </View>
   );
 };

@@ -68,8 +68,8 @@ const HomePage = ({ navigation }) => {
         >
           <View>
             {campaignsDataSuccess ? (
-              campaignsData?.campaigns.length !== 0 ? (
-                campaignsData?.campaigns.map((patient, index) => (
+              campaignsData?.length !== 0 ? (
+                campaignsData?.map((patient, index) => (
                   <TouchableOpacity
                     onPress={() => {
                       navigation.navigate('DetailScreen', {

@@ -17,28 +17,36 @@ export const getCampaigns = createAsyncThunk('/campaigns', async (thunkAPI) => {
   }
 });
 
-export const getCampaign = createAsyncThunk('/campaigns', async (thunkAPI) => {
-  try {
-    const token = await getToken();
+export const getCampaign = createAsyncThunk(
+  '/campaigns',
+  async (id, thunkAPI) => {
+    try {
+      const token = await getToken();
 
-    const { data } = await axios.get(`${config.BASE_URI}/campaigns`, {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : null,
-      },
-    });
+      const { data } = await axios.get(`${config.BASE_URI}/campaigns/${id}`, {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : null,
+        },
+      });
 
-    return data;
-  } catch (err) {
-    return thunkAPI.rejectWithValue(err.response.data);
+      return data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.response.data);
+    }
   }
-});
+);
 
 const initialState = {
-  campaignsData: {},
+  campaignsData: [],
+  campaignData: {},
 
   campaignsDataLoading: false,
   campaignsDataSuccess: false,
   campaignsDataFailed: false,
+
+  campaignDataLoading: false,
+  campaignDataSuccess: false,
+  campaignDataFailed: false,
 
   campaignsDataError: '',
 };
@@ -49,19 +57,19 @@ const campaignSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getCampaign.pending]: (state) => {
-      state.campaignsDataLoading = true;
-      state.campaignsDataSuccess = false;
+      state.campaignDataLoading = true;
+      state.campaignDataSuccess = false;
     },
     [getCampaign.fulfilled]: (state, { payload }) => {
-      state.campaignsDataLoading = false;
-      state.campaignsDataSuccess = true;
-      state.campaignsDataFailed = false;
-      state.campaignsData = payload;
+      state.campaignDataLoading = false;
+      state.campaignDataSuccess = true;
+      state.campaignDataFailed = false;
+      state.campaignData = payload;
     },
     [getCampaign.rejected]: (state, { payload }) => {
-      state.campaignsDataLoading = false;
-      state.campaignsDataSuccess = false;
-      state.campaignsDataFailed = true;
+      state.campaignDataLoading = false;
+      state.campaignDataSuccess = false;
+      state.campaignDataFailed = true;
 
       //   state.campaignsDataError = payload.msg;
     },

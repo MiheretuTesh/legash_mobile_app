@@ -17,8 +17,6 @@ const ProfileEdit = ({ userDataLoading, userData }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  console.log(userData, ' userData userData userData userData');
-
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');

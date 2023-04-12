@@ -25,9 +25,8 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (uid, thunkAPI) => {
     try {
-      console.log(uid, 'uid uid uid');
       const { data } = await axios.post(`${config.BASE_URI}/auth/login`, {
-        uid: 'zG7DFkmxjidQzVXXzf2MdBi2SD22',
+        uid: uid,
       });
       saveToken(data?.token);
       // storeAdmin(data?.role.roleName);

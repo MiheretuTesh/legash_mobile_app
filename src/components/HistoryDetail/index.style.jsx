@@ -28,10 +28,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 5,
   },
   txtContainer: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 15,
+    flexDirection: 'row',
   },
   txt: {
     color: COLORS.txtColor,

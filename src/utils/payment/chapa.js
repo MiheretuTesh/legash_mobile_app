@@ -9,6 +9,7 @@ export const chapaPay = (
   amount,
   email,
   phone_number,
+  randomLetter,
   setPaymentUri
 ) => {
   var myHeaders = new Headers();
@@ -22,7 +23,7 @@ export const chapaPay = (
     first_name: first_name,
     last_name: last_name,
     phone_number: phone_number,
-    tx_ref: 'ew3-6669',
+    tx_ref: randomLetter,
     callback_url: `${CALLBACK_URL}`,
     return_url: 'https://www.google.com/',
     'customization[title]': 'Payment for my favorite merchant',

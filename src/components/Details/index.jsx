@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {View, Text, ImageBackground, Image} from 'react-native';
 import {styles} from './index.style';
 import {useNavigation} from '@react-navigation/native';
@@ -13,6 +13,8 @@ import DonatePopUp from '../DonatePopUp';
 const Details = ({patientData}) => {
   const refRBSheet = useRef();
   const navigation = useNavigation();
+  const [imageIndex, setImageIndex] = useState(0);
+  const [backgroundImg, setBackgroundImage] = useState(patientData.images[0]);
 
   useEffect(() => {
     navigation.getParent()?.setOptions({
@@ -38,14 +40,27 @@ const Details = ({patientData}) => {
       </View>
       <View>
         <ImageBackground
-          source={{uri: patientData.imgUri}}
+          source={{uri: backgroundImg}}
           style={styles.backgroundImg}>
           <View style={styles.backgroundImgView}>
-            {patientData.images.map(image => (
-              <Image
-                source={{uri: image}}
-                style={{width: 50, height: 50, borderRadius: 10}}
-              />
+            {patientData.images.map((image, index) => (
+              <TouchableOpacity
+                onPress={() => {
+                  setImageIndex(index);
+                  setBackgroundImage(image);
+                }}>
+                <Image
+                  source={{uri: image}}
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 10,
+                    borderWidth: imageIndex === index ? 3 : 0,
+                    borderColor: imageIndex === index && COLORS.mainColor,
+                    elevation: 10,
+                  }}
+                />
+              </TouchableOpacity>
             ))}
           </View>
         </ImageBackground>

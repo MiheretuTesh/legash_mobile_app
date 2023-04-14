@@ -1,6 +1,7 @@
 package com.legash_mobile_app;
 
 import android.app.Application;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -11,6 +12,7 @@ import com.facebook.soloader.SoLoader;
 import java.util.List;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecommunity.slider.ReactSliderPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 

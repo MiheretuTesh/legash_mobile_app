@@ -32,26 +32,11 @@ const CustomDrawer = props => {
             border: 'none',
           }}>
           <View style={{flexDirection: 'row'}}>
-            <Text style={{color: COLORS.whiteColor, fontSize: 25}}>Lene</Text>
+            <Text
+              style={{color: COLORS.whiteColor, fontSize: 25, fontWeight: 700}}>
+              Legash
+            </Text>
           </View>
-          {/* <View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text style={{paddingTop: 10}}>agenagn@gmail.com</Text>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                // justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text>+251 923 232 323</Text>
-            </View>
-          </View> */}
         </View>
 
         <DrawerItemList {...props} />

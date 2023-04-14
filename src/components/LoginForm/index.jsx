@@ -2,8 +2,9 @@ import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 import {styles} from './index.style';
 import SubmittedButton from '../SubmitButton';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const LoginForm = () => {
+const LoginForm = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.txtHeroLogin}>
@@ -17,7 +18,7 @@ const LoginForm = () => {
               style={styles.input}
               // onChangeText={onChangeNumber}
               // value={number}
-              keyboardType="numeric"
+              // keyboardType="numeric"
             />
           </View>
         </View>
@@ -29,11 +30,10 @@ const LoginForm = () => {
               style={styles.input}
               // onChangeText={onChangeNumber}
               // value={number}
-              keyboardType="numeric"
+              // keyboardType="numeric"
             />
           </View>
         </View>
-        <SubmittedButton btnTitle="Sign In" />
       </View>
     </View>
   );

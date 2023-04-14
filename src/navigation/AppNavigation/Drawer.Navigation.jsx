@@ -7,6 +7,7 @@ import {
   HomeScreenStack,
   HistoryScreenStack,
   ProfileScreenStack,
+  ProfileScreenStackDrawer,
   LoginStack,
   RegisterStack,
 } from './Stack';
@@ -17,7 +18,7 @@ const Drawer = createDrawerNavigator();
 const AppDrawer = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="HistoryScreenStack"
       screenOptions={{
         drawerStyle: {
           width: 290,
@@ -33,7 +34,7 @@ const AppDrawer = () => {
       }}
       drawerContent={props => <CustomDrawer {...props} />}>
       <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreenStack} />
+      <Drawer.Screen name="Profile" component={ProfileScreenStackDrawer} />
       <Drawer.Screen name="Login" component={LoginStack} />
       <Drawer.Screen name="Register" component={RegisterStack} />
     </Drawer.Navigator>

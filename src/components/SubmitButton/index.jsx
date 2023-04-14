@@ -8,9 +8,9 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const SubmittedButton = ({btnTitle}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Text style={styles.btn}>{btnTitle}</Text>
-      </TouchableOpacity>
+      {/* <TouchableOpacity> */}
+      <Text style={styles.btn}>{btnTitle}</Text>
+      {/* </TouchableOpacity> */}
     </View>
   );
 };

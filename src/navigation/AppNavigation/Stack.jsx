@@ -6,60 +6,19 @@ const LoginPage = React.lazy(() => import('../../pages/LoginScreen'));
 const RegisterPage = React.lazy(() => import('../../pages/RegisterScreen'));
 
 const ProfilePage = React.lazy(() => import('../../pages/ProfileScreen'));
+const ProfileScreenDrawer = React.lazy(() =>
+  import('../../pages/ProfileScreenDrawer'),
+);
 const HistoryPage = React.lazy(() => import('../../pages/HistoryScreen'));
-const HomePage = React.lazy(() => import('../../pages/HomeScreen'));
 const DetailsPage = React.lazy(() => import('../../pages/DetailsScreen'));
+const MyHistoryPage = React.lazy(() => import('../../pages/MyHistoryScreen'));
 
 const Stack = createStackNavigator();
-
-const HomeScreenStack = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="HomeScreen"
-      screenOptions={{
-        headerShown: false,
-        headerTintColor: 'white',
-        headerBackTitle: 'Back',
-      }}>
-      <Stack.Screen name="HomeScreen" component={HomePage} />
-      <Stack.Screen
-        name="DetailsScreen"
-        component={DetailsPage}
-        options={() => {
-          return {
-            tabBarVisible: false,
-          };
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-const HomeStack = () => {
-  return (
-    <Stack.Navigator
-      initialRouteName="DetailsScreen"
-      screenOptions={{
-        headerShown: false,
-        headerTintColor: 'white',
-        headerBackTitle: 'Back',
-      }}>
-      <Stack.Screen
-        name="DetailsScreen"
-        component={HomePage}
-        options={() => {
-          return {
-            tabBarVisible: false,
-          };
-        }}
-      />
-    </Stack.Navigator>
-  );
-};
 
 const HistoryScreenStack = () => {
   return (
     <Stack.Navigator
+      initialRouteName="HistoryScreen"
       screenOptions={{
         headerShown: false,
         headerTintColor: 'white',
@@ -67,7 +26,7 @@ const HistoryScreenStack = () => {
       }}>
       <Stack.Screen name="HistoryScreen" component={HistoryPage} />
       <Stack.Screen
-        name="DetailsScreen"
+        name="Details"
         component={DetailsPage}
         options={() => {
           return {
@@ -79,9 +38,24 @@ const HistoryScreenStack = () => {
   );
 };
 
+const MyHistoryScreenStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="MyHistory"
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'white',
+        headerBackTitle: 'Back',
+      }}>
+      <Stack.Screen name="MyHistory" component={MyHistoryPage} />
+    </Stack.Navigator>
+  );
+};
+
 const ProfileScreenStack = () => {
   return (
     <Stack.Navigator
+      initialRouteName="ProfileScreen"
       screenOptions={{
         headerShown: false,
         headerTintColor: 'white',
@@ -92,9 +66,27 @@ const ProfileScreenStack = () => {
   );
 };
 
+const ProfileScreenStackDrawer = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="ProfileScreenDrawer"
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'white',
+        headerBackTitle: 'Back',
+      }}>
+      <Stack.Screen
+        name="ProfileScreenDrawer"
+        component={ProfileScreenDrawer}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const LoginStack = () => {
   return (
     <Stack.Navigator
+      initialRouteName="LoginScreen"
       screenOptions={{
         headerShown: false,
         headerTintColor: 'white',
@@ -108,6 +100,7 @@ const LoginStack = () => {
 const RegisterStack = () => {
   return (
     <Stack.Navigator
+      initialRouteName="RegisterScreen"
       screenOptions={{
         headerShown: false,
         headerTintColor: 'white',
@@ -119,10 +112,10 @@ const RegisterStack = () => {
 };
 
 export {
-  HomeStack,
-  HomeScreenStack,
   HistoryScreenStack,
   ProfileScreenStack,
   LoginStack,
   RegisterStack,
+  MyHistoryScreenStack,
+  ProfileScreenStackDrawer,
 };

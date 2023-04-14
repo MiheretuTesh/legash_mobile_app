@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react';
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, ImageBackground, Image} from 'react-native';
 import {styles} from './index.style';
 import {useNavigation} from '@react-navigation/native';
+import COLORS from '../../constants/colors';
 
 import CLoseIcon from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -40,7 +41,12 @@ const Details = ({patientData}) => {
           source={{uri: patientData.imgUri}}
           style={styles.backgroundImg}>
           <View style={styles.backgroundImgView}>
-            {/* <Text style={styles.text}>Hello World</Text> */}
+            {patientData.images.map(image => (
+              <Image
+                source={{uri: image}}
+                style={{width: 50, height: 50, borderRadius: 10}}
+              />
+            ))}
           </View>
         </ImageBackground>
       </View>
@@ -49,17 +55,55 @@ const Details = ({patientData}) => {
 
       <View>
         <Text style={styles.heroTxt}>Campaign Status</Text>
-        <View style={styles.txtContainer}>
-          <Text style={styles.txt}>Total Amount - </Text>
-          <Text style={styles.txt}>{patientData.goal} birr</Text>
-        </View>
-        <View style={styles.txtContainer}>
-          <Text style={styles.txt}>Raised Amount - </Text>
-          <Text style={styles.txt}>{patientData.raised} birr</Text>
-        </View>
-        <View style={styles.txtContainer}>
-          <Text style={styles.txt}>To Go - </Text>
-          <Text style={styles.txt}>{patientData.togo} birr</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <View style={styles.txtContainer}>
+            <Text
+              style={{color: COLORS.greyColor, fontWeight: 500, fontSize: 16}}>
+              Total Amount
+            </Text>
+            <Text
+              style={{color: COLORS.mainColor, fontWeight: 500, fontSize: 18}}>
+              {patientData.goal} birr
+            </Text>
+          </View>
+          <View
+            style={{
+              height: 40,
+              backgroundColor: COLORS.greyColor,
+              width: 0.5,
+            }}></View>
+          <View style={styles.txtContainer}>
+            <Text
+              style={{color: COLORS.greyColor, fontWeight: 500, fontSize: 16}}>
+              Raised Amount
+            </Text>
+            <Text
+              style={{color: COLORS.mainColor, fontWeight: 500, fontSize: 18}}>
+              {patientData.raised} birr
+            </Text>
+          </View>
+          <View
+            style={{
+              height: 40,
+              backgroundColor: COLORS.greyColor,
+              width: 0.5,
+            }}></View>
+
+          <View style={styles.txtContainer}>
+            <Text
+              style={{color: COLORS.greyColor, fontWeight: 500, fontSize: 16}}>
+              To Go
+            </Text>
+            <Text
+              style={{color: COLORS.redColor, fontWeight: 500, fontSize: 18}}>
+              {patientData.togo} birr
+            </Text>
+          </View>
         </View>
       </View>
 
@@ -67,13 +111,25 @@ const Details = ({patientData}) => {
 
       <View>
         <Text style={styles.heroTxt}>Contact Information</Text>
-        <View style={styles.txtContainer}>
-          <Text style={styles.txt}>Name - </Text>
-          <Text style={styles.txt}>{patientData.contactName}</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text
+            style={{fontSize: 16, color: COLORS.greyColor, fontWeight: 500}}>
+            Name -{' '}
+          </Text>
+          <Text
+            style={{fontSize: 16, color: COLORS.greyColor, fontWeight: 500}}>
+            {patientData.contactName}
+          </Text>
         </View>
-        <View style={styles.txtContainer}>
-          <Text style={styles.txt}>Contact - </Text>
-          <Text style={styles.txt}>{patientData.contactPhoneNumber}</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text
+            style={{fontSize: 16, color: COLORS.greyColor, fontWeight: 500}}>
+            Contact -{' '}
+          </Text>
+          <Text
+            style={{fontSize: 16, color: COLORS.greyColor, fontWeight: 500}}>
+            {patientData.contactPhoneNumber}
+          </Text>
         </View>
       </View>
 
@@ -81,7 +137,7 @@ const Details = ({patientData}) => {
 
       <View>
         <Text style={styles.heroTxt}>Description</Text>
-        <Text style={styles.txt}>
+        <Text style={{fontSize: 16, color: COLORS.greyColor, fontWeight: 500}}>
           Lorem ipsum dolor sit amet consectetur. Ipsum eu nunc egestas sit
           egestas elit blandit. Consequat amet risus diam sapien.
         </Text>
@@ -95,6 +151,7 @@ const Details = ({patientData}) => {
         }}>
         <DonatePopUp refRBSheet={refRBSheet} />
         <TouchableOpacity
+          activeOpacity={1}
           onPress={() => {
             refRBSheet.current.open();
           }}>

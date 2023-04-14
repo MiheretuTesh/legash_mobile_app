@@ -19,7 +19,7 @@ const RegisterForm = () => {
               style={styles.input}
               // onChangeText={onChangeNumber}
               // value={number}
-              keyboardType="numeric"
+              // keyboardType="numeric"
             />
           </View>
         </View>
@@ -43,7 +43,7 @@ const RegisterForm = () => {
               style={styles.input}
               // onChangeText={onChangeNumber}
               // value={number}
-              keyboardType="numeric"
+              // keyboardType="numeric"
             />
           </View>
         </View>
@@ -55,11 +55,10 @@ const RegisterForm = () => {
               style={styles.input}
               // onChangeText={onChangeNumber}
               // value={number}
-              keyboardType="numeric"
+              // keyboardType="numeric"
             />
           </View>
         </View>
-        <SubmittedButton btnTitle="Sign Up" />
       </View>
     </View>
   );

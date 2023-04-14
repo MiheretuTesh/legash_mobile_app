@@ -13,5 +13,7 @@ export const styles = StyleSheet.create({
   btn: {
     color: COLORS.whiteColor,
     padding: 8,
+    fontSize: 16,
+    fontWeight: 500,
   },
 });

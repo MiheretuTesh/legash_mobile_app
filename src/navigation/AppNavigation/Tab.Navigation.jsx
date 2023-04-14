@@ -1,17 +1,18 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import COLORS from '../../constants/colors';
 import {
-  HomeStack,
   HistoryScreenStack,
   ProfileScreenStack,
   LoginStack,
   RegisterStack,
+  MyHistoryScreenStack,
 } from './Stack';
 
 // Icons
 import HomeIcon from 'react-native-vector-icons/Foundation';
 import HistoryIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ProfileIcon from 'react-native-vector-icons/Ionicons';
+import HistoryPage from '../../pages/HistoryScreen';
 
 // Create tab navigator
 const Tab = createBottomTabNavigator();
@@ -21,7 +22,6 @@ export default HomeScreen = () => {
     <Tab.Navigator
       initialRouteName="HomeTab"
       screenOptions={({route}) => ({
-        // <-- Remove extra parentheses
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: COLORS.tabActive,
@@ -35,7 +35,7 @@ export default HomeScreen = () => {
       })}>
       <Tab.Screen
         name="HomeTab"
-        component={HomeStack}
+        component={HistoryScreenStack}
         options={{
           headerShown: false,
           tabBarLabel: 'Home',
@@ -51,7 +51,7 @@ export default HomeScreen = () => {
       />
       <Tab.Screen
         name="HistoryTab"
-        component={HistoryScreenStack}
+        component={MyHistoryScreenStack}
         options={{
           headerShown: false,
           tabBarLabel: 'History',

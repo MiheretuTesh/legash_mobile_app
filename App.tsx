@@ -1,5 +1,6 @@
-import React, {Suspense} from 'react';
+import React, {useEffect} from 'react';
 import type {PropsWithChildren} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import 'react-native-gesture-handler';
 import {
   SafeAreaView,
@@ -22,9 +23,9 @@ type SectionProps = PropsWithChildren<{
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() !== 'dark';
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return <AppNavigation />;
 }

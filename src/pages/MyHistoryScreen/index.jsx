@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, ScrollView, Image, TextInput} from 'react-native';
-import HistoryCard from '../../components/HistoryCard';
+import MyHistoryCard from '../../components/MyHistoryCard';
 import {styles} from './index.style';
 import Patients from '../../constants/Patients';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -11,7 +11,7 @@ import MenuIcon from 'react-native-vector-icons/Feather';
 // import {readFileSync} from 'fs';
 
 // create a component
-const HistoryPage = ({navigation}) => {
+const MyHistoryPage = ({navigation}) => {
   // const pathToSvg = require('../../assets/menu.svg');
   // const svgData = readFileSync(pathToSvg, 'utf8');
   // const svgUri = `data:image/svg+xml;base64,${Buffer.from(svgData).toString(
@@ -27,32 +27,11 @@ const HistoryPage = ({navigation}) => {
           </View>
         </TouchableOpacity>
 
-        <View
-          style={{
-            marginHorizontal: 10,
-            borderWidth: 1,
-            borderRadius: 30,
-            marginBottom: 10,
-          }}>
-          <TextInput
-            // onChangeText={onChangeNumber}
-            // value={number}
-            // keyboardType="numeric"
-            placeholder="Search"
-            placeholderTextColor={'black'}
-            style={{paddingHorizontal: 20, color: 'black'}}
-          />
-        </View>
         <ScrollView>
           <View>
             {Patients.map((patient, index) => (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Details', {patientData: patient});
-                }}
-                key={index}
-                style={{marginVertical: 10}}>
-                <HistoryCard patient={patient} />
+              <TouchableOpacity key={index} style={{marginVertical: 10}}>
+                <MyHistoryCard patient={patient} />
               </TouchableOpacity>
             ))}
           </View>
@@ -63,4 +42,4 @@ const HistoryPage = ({navigation}) => {
 };
 
 //make this component available to the app
-export default HistoryPage;
+export default MyHistoryPage;

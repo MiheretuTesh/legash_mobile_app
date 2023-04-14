@@ -5,7 +5,7 @@ import {styles} from './index.style';
 const DashboardCard = () => {
   return (
     <View style={styles.container}>
-      <Text>Dahsboard</Text>
+      <Text style={{color: 'black'}}>Dashboard</Text>
     </View>
   );
 };

@@ -12,6 +12,9 @@ const ProfileScreenDrawer = React.lazy(() =>
 const HistoryPage = React.lazy(() => import('../../pages/HistoryScreen'));
 const DetailsPage = React.lazy(() => import('../../pages/DetailsScreen'));
 const MyHistoryPage = React.lazy(() => import('../../pages/MyHistoryScreen'));
+const ProfileEditPage = React.lazy(() =>
+  import('../../pages/ProfileEditScreen'),
+);
 
 const Stack = createStackNavigator();
 
@@ -62,6 +65,7 @@ const ProfileScreenStack = () => {
         headerBackTitle: 'Back',
       }}>
       <Stack.Screen name="ProfileScreen" component={ProfilePage} />
+      <Stack.Screen name="ProfileEditScreen" component={ProfileEditPage} />
     </Stack.Navigator>
   );
 };

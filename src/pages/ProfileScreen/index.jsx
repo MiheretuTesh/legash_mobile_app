@@ -9,8 +9,11 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 const ProfilePage = ({navigation}) => {
   const handleHistoryNavigate = () => {
     navigation.navigate('HistoryTab');
+  };
 
-    console.log('Hello Button');
+  const handleProfileEditNavigation = () => {
+    navigation.navigate('ProfileEditScreen');
+    console.log('Hello');
   };
   return (
     <View style={styles.container}>
@@ -21,7 +24,10 @@ const ProfilePage = ({navigation}) => {
           </View>
         </TouchableOpacity>
       </View>
-      <PersonalDetails handleHistoryNavigate={handleHistoryNavigate} />
+      <PersonalDetails
+        handleHistoryNavigate={handleHistoryNavigate}
+        handleProfileEditNavigation={handleProfileEditNavigation}
+      />
     </View>
   );
 };

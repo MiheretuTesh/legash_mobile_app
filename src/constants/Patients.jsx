@@ -17,6 +17,7 @@ export default Patients = [
       'https://t3.ftcdn.net/jpg/01/92/04/50/360_F_192045025_kfX6crKwqWyglHA5cky27XAlXxcRllZM.jpg',
       'https://images.unsplash.com/photo-1627971202114-2938471e4ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
     ],
+    progressPercent: 80,
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ export default Patients = [
       'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
       'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
     ],
+    progressPercent: 60,
   },
   {
     id: 3,
@@ -55,6 +57,7 @@ export default Patients = [
       'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
       'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
     ],
+    progressPercent: 85,
   },
   {
     id: 4,
@@ -74,6 +77,7 @@ export default Patients = [
       'https://images.unsplash.com/photo-1588349482083-036b31c6eca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
       'https://t3.ftcdn.net/jpg/01/92/04/50/360_F_192045025_kfX6crKwqWyglHA5cky27XAlXxcRllZM.jpg',
     ],
+    progressPercent: 40,
   },
   {
     id: 5,
@@ -93,6 +97,7 @@ export default Patients = [
       'https://images.unsplash.com/photo-1627971202114-2938471e4ca5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
       'https://cdnuploads.aa.com.tr/uploads/PhotoGallery/2018/03/22/thumbs_b2_fc8593ede6e5a7d82cfcfcc32314f58c.jpg',
     ],
+    progressPercent: 55,
   },
   {
     id: 6,
@@ -112,6 +117,7 @@ export default Patients = [
       'https://t3.ftcdn.net/jpg/01/92/04/50/360_F_192045025_kfX6crKwqWyglHA5cky27XAlXxcRllZM.jpg',
       'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
     ],
+    progressPercent: 30,
   },
   {
     id: 7,
@@ -131,5 +137,6 @@ export default Patients = [
       'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
       'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
     ],
+    progressPercent: 75,
   },
 ];

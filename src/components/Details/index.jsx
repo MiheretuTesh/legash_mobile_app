@@ -4,7 +4,7 @@ import {styles} from './index.style';
 import {useNavigation} from '@react-navigation/native';
 import COLORS from '../../constants/colors';
 
-import CLoseIcon from 'react-native-vector-icons/AntDesign';
+import CloseIcon from 'react-native-vector-icons/AntDesign';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import DonateButton from '../DonateButton';
@@ -35,7 +35,7 @@ const Details = ({patientData}) => {
           paddingVertical: 15,
         }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <CLoseIcon name="close" size={20} color={'black'} />
+          <CloseIcon name="close" size={20} color={'black'} />
         </TouchableOpacity>
       </View>
       <View>

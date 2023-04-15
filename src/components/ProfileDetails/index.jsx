@@ -15,7 +15,10 @@ import AboutIcon from 'react-native-vector-icons/AntDesign';
 import COLORS from '../../constants/colors';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const PersonalDetails = ({handleHistoryNavigate}) => {
+const PersonalDetails = ({
+  handleHistoryNavigate,
+  handleProfileEditNavigation,
+}) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -190,7 +193,8 @@ const PersonalDetails = ({handleHistoryNavigate}) => {
                   Setting
                 </Text>
               </View>
-              <View
+              <TouchableOpacity
+                onPress={handleProfileEditNavigation}
                 style={{
                   borderColor: COLORS.mainColor,
                   borderWidth: 1,
@@ -204,20 +208,27 @@ const PersonalDetails = ({handleHistoryNavigate}) => {
                   alignItems: 'center',
                   padding: 10,
                 }}>
-                <AccountIcon
-                  name="account-edit-outline"
-                  size={50}
-                  color={COLORS.mainColor}
-                />
-                <Text
+                <View
                   style={{
-                    color: COLORS.mainColor,
-                    fontSize: 16,
-                    fontWeight: 500,
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                   }}>
-                  Edit Profile
-                </Text>
-              </View>
+                  <AccountIcon
+                    name="account-edit-outline"
+                    size={50}
+                    color={COLORS.mainColor}
+                  />
+                  <Text
+                    style={{
+                      color: COLORS.mainColor,
+                      fontSize: 16,
+                      fontWeight: 500,
+                    }}>
+                    Edit Profile
+                  </Text>
+                </View>
+              </TouchableOpacity>
             </View>
             <View
               style={{

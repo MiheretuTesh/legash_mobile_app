@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 20,
     color: COLORS.tabBar,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   progressView: {
     width: '80%',

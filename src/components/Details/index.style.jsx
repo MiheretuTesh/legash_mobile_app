@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#2c3e50',
   },
   backgroundImg: {
-    height: 200,
+    height: 230,
     width: '100%',
     flex: 1,
     resizeMode: 'cover',

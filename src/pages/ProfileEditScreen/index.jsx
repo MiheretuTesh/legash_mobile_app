@@ -6,7 +6,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './index.style';
 import PersonIcon from 'react-native-vector-icons/Fontisto';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-
 import CloseIcon from 'react-native-vector-icons/AntDesign';
 
 // create a component

@@ -13,7 +13,6 @@ const ProfilePage = ({navigation}) => {
 
   const handleProfileEditNavigation = () => {
     navigation.navigate('ProfileEditScreen');
-    console.log('Hello');
   };
   return (
     <View style={styles.container}>

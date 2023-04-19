@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    
   },
   upperContainer: {
     height: height / 3 - 120,
@@ -17,7 +16,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottomContainer: {
-    paddingVertical: 20,
+    paddingVertical: 50,
     width: '100%',
     height: (height * 2) / 3 + 50,
     backgroundColor: COLORS.whiteColor,
@@ -27,5 +26,32 @@ export const styles = StyleSheet.create({
     padding: 50,
     // justifyContent: 'center',
     // alignContent: 'center',
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  labelTxt: {
+    color: COLORS.txtColor,
+    fontSize: 14,
+    paddingBottom: 5,
+    fontWeight: 500,
+  },
+  inputContainer: {
+    marginBottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  inputFieldContainer: {
+    backgroundColor: '#F7F7F7',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: COLORS.mainColor,
+    width: '80%',
+  },
+  input: {
+    color: COLORS.txtColor,
+    paddingTop: 5,
+    paddingBottom: 5,
   },
 });

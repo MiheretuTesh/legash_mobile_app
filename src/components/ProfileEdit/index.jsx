@@ -1,9 +1,11 @@
 //import liraries
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 import {styles} from './index.style';
 import PersonIcon from 'react-native-vector-icons/Fontisto';
 import {useNavigation} from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import SubmittedButton from '../SubmitButton';
 
 // create a component
 const ProfileEdit = () => {
@@ -84,13 +86,79 @@ const ProfileEdit = () => {
       </View>
       <View style={styles.bottomContainer}>
         <View style={{flexDirection: 'column'}}>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              marginBottom: 20,
-            }}></View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.labelTxt}>Name</Text>
+            <View style={{width: 10}}></View>
+
+            <View style={styles.inputFieldContainer}>
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                // keyboardType="numeric"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.labelTxt}>Phone</Text>
+            <View style={{width: 10}}></View>
+
+            <View style={styles.inputFieldContainer}>
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                // keyboardType="numeric"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.labelTxt}>Email</Text>
+            <View style={{width: 10}}></View>
+
+            <View style={styles.inputFieldContainer}>
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                // keyboardType="numeric"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.labelTxt}>Password</Text>
+            <View style={{width: 10}}></View>
+
+            <View style={styles.inputFieldContainer}>
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                // keyboardType="numeric"
+              />
+            </View>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text style={styles.labelTxt}>Confirm</Text>
+            <View style={{width: 10}}></View>
+            <View style={styles.inputFieldContainer}>
+              <TextInput
+                style={styles.input}
+                // onChangeText={onChangeNumber}
+                // value={number}
+                // keyboardType="numeric"
+              />
+            </View>
+          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}
+            style={{paddingHorizontal: 65}}>
+            <SubmittedButton btnTitle={'Update'} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

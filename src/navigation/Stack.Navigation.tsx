@@ -14,6 +14,8 @@ import SavedScreen from '../pages/SavedScreen';
 import ProfileEditScreen from '../pages/ProfileEditScreen';
 import ProfileScreen from '../pages/ProfileScreen';
 import RegisterScreen from '../pages/RegisterScreen';
+import ChapaCheckoutScreen from '../components/ChapaWebView';
+import YegnaCheckoutScreen from '../components/YegnaWebView';
 
 //Landing Pages
 import HistoryScreenLanding from '../pages/HistoryScreenLanding';
@@ -33,6 +35,8 @@ export const MainStackNavigator = () => {
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="DetailScreen" component={DetailsScreen} />
+      <Stack.Screen name="ChapaPaymentScreen" component={ChapaCheckoutScreen} />
+      <Stack.Screen name="YegnaPaymentScreen" component={YegnaCheckoutScreen} />
     </Stack.Navigator>
   );
 };

@@ -10,7 +10,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import DonateButton from '../DonateButton';
 import DonatePopUp from '../DonatePopUp';
 
-const Details = ({ patientData }) => {
+const Details = ({ patientData, handleNavigate }) => {
   const refRBSheet = useRef();
   const navigation = useNavigation();
   const [imageIndex, setImageIndex] = useState(0);
@@ -60,7 +60,7 @@ const Details = ({ patientData }) => {
           <View style={styles.backgroundImgView}>
             {patientData.images.length > 0
               ? patientData.images.map((image, index) => {
-                  const currentIndex = imageIndex; // Declare a separate variable
+                  const currentIndex = imageIndex;
                   return (
                     <TouchableOpacity
                       key={index}
@@ -227,7 +227,7 @@ const Details = ({ patientData }) => {
           alignItems: 'center',
         }}
       >
-        <DonatePopUp refRBSheet={refRBSheet} />
+        <DonatePopUp refRBSheet={refRBSheet} handleNavigate={handleNavigate} />
         <TouchableOpacity
           activeOpacity={1}
           onPress={() => {

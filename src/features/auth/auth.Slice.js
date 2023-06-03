@@ -1,7 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import config from '../../constants/config.keys';
-import { getToken, saveToken, logout } from '../../utils/token.get.set';
+import {
+  getToken,
+  saveToken,
+  logout,
+  storeAdmin,
+} from '../../utils/token.get.set';
 
 export const signupUser = createAsyncThunk(
   'user/singUpUser',
@@ -20,16 +25,11 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (uid, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        `${config.BASE_URI}/auth/login`,
-        formData
-      );
-      console.log(data?.data);
-      saveToken(data?.token.authToken);
-      // if (data.isAdmin === 'admin') {
-      //   storeAdmin(data.isAdmin);
-      // }
-      // console.log(data, 'Data');
+      const { data } = await axios.post(`${config.BASE_URI}/auth/login`, {
+        uid: uid,
+      });
+      saveToken(data?.token);
+      // storeAdmin(data?.role.roleName);
       return data;
     } catch (err) {
       console.log('Error Occurring', err);
@@ -128,7 +128,7 @@ const authSlice = createSlice({
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoginFetching = false;
       state.isLoginError = true;
-      state.loginErrorMessage = payload.msg;
+      state.loginErrorMessage = payload;
     },
 
     [getCurrentUser.pending]: (state) => {
@@ -148,7 +148,7 @@ const authSlice = createSlice({
     [getCurrentUser.rejected]: (state, { payload }) => {
       state.isLoginFetching = false;
       state.isLoginError = true;
-      state.loginErrorMessage = payload.msg;
+      state.loginErrorMessage = payload;
     },
 
     [logoutUser.pending]: (state) => {

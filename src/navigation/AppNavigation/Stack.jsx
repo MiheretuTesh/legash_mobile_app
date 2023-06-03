@@ -15,6 +15,9 @@ const MyHistoryPage = React.lazy(() => import('../../pages/MyHistoryScreen'));
 const ProfileEditPage = React.lazy(() =>
   import('../../pages/ProfileEditScreen')
 );
+const ChapaPaymentWebView = React.lazy(() =>
+  import('../../components/ChapaWebView/index')
+);
 
 const Stack = createStackNavigator();
 
@@ -29,6 +32,7 @@ const HistoryScreenStack = () => {
       }}
     >
       <Stack.Screen name="HistoryScreen" component={HistoryPage} />
+      <Stack.Screen name="WebView" component={ChapaPaymentWebView} />
       <Stack.Screen
         name="Details"
         component={DetailsPage}
@@ -85,7 +89,7 @@ const ProfileScreenStackDrawer = () => {
     >
       <Stack.Screen
         name="ProfileScreenDrawer"
-        component={ProfileScreenDrawer}
+        component={ChapaPaymentWebView}
       />
     </Stack.Navigator>
   );

@@ -10,9 +10,20 @@ export const saveToken = (token: string) => {
     });
 };
 
+export const storeAdmin = (role: string) => {
+  AsyncStorage.setItem('role', role)
+    .then(() => {
+      console.log('Role saved to AsyncStorage');
+    })
+    .catch((error) => {
+      console.log('Error saving Role to AsyncStorage:', error);
+    });
+};
+
 export const getToken = async () => {
   try {
     const token = await AsyncStorage.getItem('token');
+    console.log(token);
     return token;
     // Continue with token handling or processing
   } catch (error) {

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUserTransaction } from '../../features/transaction/transaction.Slice';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import MenuIcon from 'react-native-vector-icons/Feather';
+import COLORS from '../../constants/colors';
 
 const HistoryScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -23,11 +24,6 @@ const HistoryScreen = ({ navigation }) => {
     transactionDataFailed,
     transactionData,
   } = useSelector((state) => state.transaction);
-
-  console.log(
-    transactionData,
-    'transactionData transactionData transactionData'
-  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,7 +52,17 @@ const HistoryScreen = ({ navigation }) => {
                   </TouchableOpacity>
                 ))
               ) : (
-                <Text>No Donation History</Text>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    padding: 10,
+                    fontSize: 16,
+                    fontWeight: 500,
+                    fontStyle: 'italic',
+                  }}
+                >
+                  No Donation History
+                </Text>
               )
             ) : (
               <LoadingComponent size={'large'} loadingColor="#8D8D8D" />

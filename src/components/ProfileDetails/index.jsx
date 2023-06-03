@@ -1,8 +1,8 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import {styles} from './index.style';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, { Component } from 'react';
+import { View, Text, ScrollView } from 'react-native';
+import { styles } from './index.style';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import PersonIcon from 'react-native-vector-icons/Fontisto';
 import HistoryIcon from 'react-native-vector-icons/AntDesign';
@@ -11,13 +11,15 @@ import SettingIcon from 'react-native-vector-icons/AntDesign';
 import AccountIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CommentIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AboutIcon from 'react-native-vector-icons/AntDesign';
+import LogoutIcon from 'react-native-vector-icons/Entypo';
 
 import COLORS from '../../constants/colors';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const PersonalDetails = ({
   handleHistoryNavigate,
   handleProfileEditNavigation,
+  handleLogout,
 }) => {
   return (
     <SafeAreaView style={styles.container}>
@@ -29,8 +31,9 @@ const PersonalDetails = ({
               flexDirection: 'row',
               justifyContent: 'space-around',
               alignItems: 'center',
-            }}>
-            <View style={{flexDirection: 'column', alignItems: 'center'}}>
+            }}
+          >
+            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
               <View
                 style={{
                   borderRadius: 100,
@@ -41,12 +44,15 @@ const PersonalDetails = ({
                   height: 60,
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
-                <Text style={{color: 'black', fontWeight: 500, fontSize: 18}}>
+                }}
+              >
+                <Text style={{ color: 'black', fontWeight: 500, fontSize: 18 }}>
                   20K
                 </Text>
               </View>
-              <Text style={{fontSize: 16, fontWeight: 500, paddingBottom: 10}}>
+              <Text
+                style={{ fontSize: 16, fontWeight: 500, paddingBottom: 10 }}
+              >
                 Amount
               </Text>
             </View>
@@ -57,10 +63,11 @@ const PersonalDetails = ({
                 padding: 20,
                 width: 100,
                 height: 100,
-              }}>
+              }}
+            >
               <PersonIcon size={80} name="person" color="black" />
             </View>
-            <View style={{flexDirection: 'column', alignItems: 'center'}}>
+            <View style={{ flexDirection: 'column', alignItems: 'center' }}>
               <View
                 style={{
                   borderRadius: 100,
@@ -71,12 +78,15 @@ const PersonalDetails = ({
                   height: 60,
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
-                <Text style={{color: 'black', fontWeight: 500, fontSize: 18}}>
+                }}
+              >
+                <Text style={{ color: 'black', fontWeight: 500, fontSize: 18 }}>
                   10
                 </Text>
               </View>
-              <Text style={{fontSize: 16, fontWeight: 500, paddingBottom: 10}}>
+              <Text
+                style={{ fontSize: 16, fontWeight: 500, paddingBottom: 10 }}
+              >
                 Donated
               </Text>
             </View>
@@ -84,14 +94,15 @@ const PersonalDetails = ({
         </View>
 
         <View style={styles.bottomContainer}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View
               style={{
                 width: '100%',
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 marginBottom: 20,
-              }}>
+              }}
+            >
               <TouchableOpacity
                 onPress={handleHistoryNavigate}
                 style={{
@@ -106,7 +117,8 @@ const PersonalDetails = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
-                }}>
+                }}
+              >
                 <View>
                   <HistoryIcon
                     name="calendar"
@@ -121,7 +133,8 @@ const PersonalDetails = ({
                       flexDirection: 'row',
                       alignItems: 'center',
                       justifyContent: 'center',
-                    }}>
+                    }}
+                  >
                     Donation History
                   </Text>
                 </View>
@@ -139,7 +152,8 @@ const PersonalDetails = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
-                }}>
+                }}
+              >
                 <NotificationIcon
                   name="notifications-outline"
                   size={50}
@@ -150,7 +164,8 @@ const PersonalDetails = ({
                     color: COLORS.mainColor,
                     fontSize: 16,
                     fontWeight: 500,
-                  }}>
+                  }}
+                >
                   Notification
                 </Text>
               </View>
@@ -161,7 +176,8 @@ const PersonalDetails = ({
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 marginBottom: 20,
-              }}>
+              }}
+            >
               <View
                 style={{
                   borderColor: COLORS.mainColor,
@@ -175,7 +191,8 @@ const PersonalDetails = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
-                }}>
+                }}
+              >
                 <SettingIcon
                   name="setting"
                   size={50}
@@ -189,7 +206,8 @@ const PersonalDetails = ({
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}>
+                  }}
+                >
                   Setting
                 </Text>
               </View>
@@ -207,13 +225,15 @@ const PersonalDetails = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
-                }}>
+                }}
+              >
                 <View
                   style={{
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
-                  }}>
+                  }}
+                >
                   <AccountIcon
                     name="account-edit-outline"
                     size={50}
@@ -224,7 +244,8 @@ const PersonalDetails = ({
                       color: COLORS.mainColor,
                       fontSize: 16,
                       fontWeight: 500,
-                    }}>
+                    }}
+                  >
                     Edit Profile
                   </Text>
                 </View>
@@ -235,7 +256,8 @@ const PersonalDetails = ({
                 width: '100%',
                 flexDirection: 'row',
                 justifyContent: 'space-around',
-              }}>
+              }}
+            >
               <View
                 style={{
                   borderColor: COLORS.mainColor,
@@ -249,7 +271,8 @@ const PersonalDetails = ({
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 10,
-                }}>
+                }}
+              >
                 <CommentIcon
                   name="comment-account-outline"
                   size={50}
@@ -263,11 +286,54 @@ const PersonalDetails = ({
                     flexDirection: 'row',
                     alignItems: 'center',
                     justifyContent: 'center',
-                  }}>
+                  }}
+                >
                   Comments
                 </Text>
               </View>
-              <View
+              <TouchableOpacity
+                onPress={handleLogout}
+                style={{
+                  borderColor: COLORS.mainColor,
+                  borderWidth: 1,
+                  width: 130,
+                  height: 130,
+                  borderRadius: 20,
+                  elevation: 10,
+                  backgroundColor: 'white',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  padding: 10,
+                }}
+              >
+                <View
+                  style={{
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <LogoutIcon
+                    name="log-out"
+                    size={50}
+                    color={COLORS.mainColor}
+                  />
+                  <Text
+                    style={{
+                      color: COLORS.mainColor,
+                      fontSize: 16,
+                      fontWeight: 500,
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    Logout
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              {/* <View
                 style={{
                   borderColor: COLORS.mainColor,
                   borderWidth: 1,
@@ -294,7 +360,7 @@ const PersonalDetails = ({
                   }}>
                   Notification
                 </Text>
-              </View>
+              </View> */}
             </View>
           </View>
         </View>

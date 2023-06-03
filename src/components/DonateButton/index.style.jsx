@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import COLORS from '../../constants/colors';
 
 export const styles = StyleSheet.create({
@@ -13,5 +13,5 @@ export const styles = StyleSheet.create({
     elevation: 6,
     marginBottom: 20,
   },
-  btnTxt: {fontSize: 20, fontWeight: 600, color: COLORS.whiteColor},
+  btnTxt: { fontSize: 20, fontWeight: 600, color: COLORS.whiteColor },
 });

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import COLORS from '../../constants/colors';
 
 export default styles = StyleSheet.create({
@@ -7,7 +7,7 @@ export default styles = StyleSheet.create({
     height: '100%',
   },
   upperContainer: {
-    height: 230,
+    height: 150,
     width: '100%',
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,

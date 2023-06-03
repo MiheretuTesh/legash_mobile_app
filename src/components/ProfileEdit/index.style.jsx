@@ -1,7 +1,7 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import COLORS from '../../constants/colors';
 
-const {height, width} = Dimensions.get('screen');
+const { height, width } = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
@@ -53,5 +53,20 @@ export const styles = StyleSheet.create({
     color: COLORS.txtColor,
     paddingTop: 5,
     paddingBottom: 5,
+  },
+  popoverContainer: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    right: 20,
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    elevation: 5,
+  },
+  popoverText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

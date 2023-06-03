@@ -1,33 +1,44 @@
-import React, {useEffect} from 'react';
-import type {PropsWithChildren} from 'react';
+import React, { useState, useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import SplashScreen from 'react-native-splash-screen';
 import 'react-native-gesture-handler';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import AppNavigation from './src/navigation/AppNavigation';
-
-const LoginForm = React.lazy(() => import('./src/components/LoginForm'));
-import RegisterForm from './src/components/RegisterForm';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import { StyleSheet, useColorScheme } from 'react-native';
+import AppNavigation from './src/navigation';
+import { getToken } from './src/utils/token.get.set';
+import { Provider } from 'react-redux';
+import store from './store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() !== 'dark';
+  const queryClient = new QueryClient();
+
+  const [tokenData, setTokenData] = useState(null);
+  const isLoggedIn = async () => {
+    try {
+      const token: any = await AsyncStorage.getItem('token');
+      setTokenData(token);
+      return token;
+    } catch (err) {
+      console.log(err, 'Error while trying to get token');
+    }
+  };
+
+  useEffect(() => {
+    isLoggedIn();
+  });
 
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
-  return <AppNavigation />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <AppNavigation token={tokenData} />
+      </Provider>
+    </QueryClientProvider>
+  );
 }
 
 const styles = StyleSheet.create({

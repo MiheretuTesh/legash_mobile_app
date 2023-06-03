@@ -1,60 +1,66 @@
-import React, {Component} from 'react';
-import {View, Text, ScrollView, Image, TextInput} from 'react-native';
-import HistoryCard from '../../components/HistoryCard';
-import {styles} from './index.style';
+import React, { useEffect } from 'react';
+import { View, Text, ScrollView, Image, TextInput } from 'react-native';
+import MyHistoryCard from '../../components/MyHistoryCard';
+import { styles } from './index.style';
 import Patients from '../../constants/Patients';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {SafeAreaView} from 'react-native-safe-area-context';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUserTransaction } from '../../features/transaction/transaction.Slice';
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import MenuIcon from 'react-native-vector-icons/Feather';
-// import SvgUri from 'react-native-svg-uri';
-// import {readFileSync} from 'fs';
 
-// create a component
-const HistoryPage = ({navigation}) => {
-  // const pathToSvg = require('../../assets/menu.svg');
-  // const svgData = readFileSync(pathToSvg, 'utf8');
-  // const svgUri = `data:image/svg+xml;base64,${Buffer.from(svgData).toString(
-  //   'base64',
-  // )}`;
+const HistoryScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUserTransaction());
+  }, []);
+
+  const {
+    transactionDataLoading,
+    transactionDataSuccess,
+    transactionDataFailed,
+    transactionData,
+  } = useSelector((state) => state.transaction);
+
+  console.log(
+    transactionData,
+    'transactionData transactionData transactionData'
+  );
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
+      <View style={{ width: '100%', paddingHorizontal: 20 }}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <View style={{paddingVertical: 20}}>
+          <View style={{ paddingVertical: 20 }}>
             <MenuIcon name="menu" size={20} color="black" />
           </View>
         </TouchableOpacity>
 
-        <View
-          style={{
-            marginHorizontal: 10,
-            borderWidth: 1,
-            borderRadius: 30,
-            marginBottom: 10,
-          }}>
-          <TextInput
-            // onChangeText={onChangeNumber}
-            // value={number}
-            // keyboardType="numeric"
-            placeholder="Search"
-            placeholderTextColor={'black'}
-            style={{paddingHorizontal: 20, color: 'black'}}
-          />
-        </View>
         <ScrollView>
           <View>
-            {Patients.map((patient, index) => (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.navigate('Details', {patientData: patient});
-                }}
-                key={index}
-                style={{marginVertical: 10}}>
-                <HistoryCard patient={patient} />
-              </TouchableOpacity>
-            ))}
+            {transactionDataSuccess ? (
+              transactionData?.data.length > 0 ? (
+                transactionData?.data.map((donation, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={{ marginVertical: 10 }}
+                    onPress={() => {
+                      navigation.navigate('HistoryDetailsScreen', {
+                        donationData: donation,
+                      });
+                    }}
+                  >
+                    <MyHistoryCard donation={donation} />
+                  </TouchableOpacity>
+                ))
+              ) : (
+                <Text>No Donation History</Text>
+              )
+            ) : (
+              <LoadingComponent size={'large'} loadingColor="#8D8D8D" />
+            )}
           </View>
         </ScrollView>
       </View>
@@ -62,5 +68,4 @@ const HistoryPage = ({navigation}) => {
   );
 };
 
-//make this component available to the app
-export default HistoryPage;
+export default HistoryScreen;

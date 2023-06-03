@@ -1,8 +1,9 @@
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './Tab.Navigation';
 import CustomDrawer from '../../components/CustomDrawer';
-import {Button, View, Text} from 'react-native';
+import CustomDrawerAuth from '../../components/CustomDrawerAuth';
+import { Button, View, Text } from 'react-native';
 import {
   HomeScreenStack,
   HistoryScreenStack,
@@ -18,6 +19,7 @@ const Drawer = createDrawerNavigator();
 const AppDrawer = () => {
   return (
     <Drawer.Navigator
+      useLegacyImplementation={false}
       initialRouteName="HistoryScreenStack"
       screenOptions={{
         drawerStyle: {
@@ -32,8 +34,9 @@ const AppDrawer = () => {
           fontSize: 15,
         },
       }}
-      drawerContent={props => <CustomDrawer {...props} />}>
-      <Drawer.Screen name="Home" component={HomeScreen} />
+      drawerContent={(props) => <CustomDrawer {...props} />}
+    >
+      <Drawer.Screen name="Home" component={HistoryScreenStack} />
       <Drawer.Screen name="Profile" component={ProfileScreenStackDrawer} />
       <Drawer.Screen name="Login" component={LoginStack} />
       <Drawer.Screen name="Register" component={RegisterStack} />

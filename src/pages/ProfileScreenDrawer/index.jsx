@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import PersonalDetails from '../../components/ProfileDetails';
-import {styles} from './index.style';
+import { styles } from './index.style';
 import CloseIcon from 'react-native-vector-icons/AntDesign';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // create a component
-const ProfileScreenDrawer = ({navigation}) => {
+const ProfileScreenDrawer = ({ navigation }) => {
   const handleHistoryNavigate = () => {
     navigation.navigate('HistoryTab');
   };
@@ -14,7 +14,7 @@ const ProfileScreenDrawer = ({navigation}) => {
     <View style={styles.container}>
       <View>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <View style={{paddingVertical: 20, paddingHorizontal: 25}}>
+          <View style={{ paddingVertical: 20, paddingHorizontal: 25 }}>
             <CloseIcon name="closecircleo" size={20} color="white" />
           </View>
         </TouchableOpacity>

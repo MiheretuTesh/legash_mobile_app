@@ -1,18 +1,29 @@
 //import liraries
-import React, {useState} from 'react';
-import {View, Text, TextInput, Dimensions, Pressable} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Dimensions, Pressable } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
-import {styles} from './index.style';
+import { styles } from './index.style';
 import DonateButton from '../DonateButton';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useAddCampaign } from '../../hooks/useAddCampaign';
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
-const DonatePopUp = ({refRBSheet}) => {
+const DonatePopUp = ({ refRBSheet }) => {
   const [paymentGateWay, setPaymentGateWay] = useState(0);
 
-  const handlePaymentChange = index => {
+  // const {mutate, data, isLoading, isSuccess} = useAddCampaign({
+  //   onSuccess: campaignAddHandler,
+  //   onError: onAddCampaignError,
+  // });
+
+  const handlePaymentChange = (index) => {
     setPaymentGateWay(index);
+  };
+
+  const handleDonate = () => {
+    refRBSheet.current.close();
+    // mutate;
   };
 
   const PaymentTabs = () => {
@@ -35,9 +46,11 @@ const DonatePopUp = ({refRBSheet}) => {
             index === paymentGateWay
               ? styles.txtContainerActive
               : styles.txtContainer
-          }>
+          }
+        >
           <Text
-            style={index === paymentGateWay ? styles.txtActive : styles.txt}>
+            style={index === paymentGateWay ? styles.txtActive : styles.txt}
+          >
             {payment.title}
           </Text>
         </View>
@@ -59,7 +72,8 @@ const DonatePopUp = ({refRBSheet}) => {
         draggableIcon: {
           backgroundColor: '#000',
         },
-      }}>
+      }}
+    >
       <View style={styles.popContainer}>
         <View>
           <Text style={styles.heroTxt}>Donate</Text>
@@ -103,8 +117,9 @@ const DonatePopUp = ({refRBSheet}) => {
           </View>
           <Pressable
             onPress={() => {
-              refRBSheet.current.close();
-            }}>
+              handleDonate();
+            }}
+          >
             <DonateButton />
           </Pressable>
         </View>

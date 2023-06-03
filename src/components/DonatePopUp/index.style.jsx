@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import COLORS from '../../constants/colors';
 
 export const styles = StyleSheet.create({
@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 700,
   },
-  formContainer: {width: '70%', marginTop: 50},
+  formContainer: { width: '70%', marginTop: 50 },
   labelTxt: {
     color: COLORS.txtColor,
     fontSize: 15,

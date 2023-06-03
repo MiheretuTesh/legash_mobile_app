@@ -1,7 +1,7 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {styles} from './index.style';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { styles } from './index.style';
 
 // create a component
 const DonateButton = () => {

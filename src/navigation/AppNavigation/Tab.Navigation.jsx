@@ -1,4 +1,4 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import COLORS from '../../constants/colors';
 import {
   HistoryScreenStack,
@@ -21,7 +21,7 @@ export default HomeScreen = () => {
   return (
     <Tab.Navigator
       initialRouteName="HomeTab"
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         headerShown: false,
         tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: COLORS.tabActive,
@@ -32,15 +32,16 @@ export default HomeScreen = () => {
           },
           null,
         ],
-      })}>
+      })}
+    >
       <Tab.Screen
         name="HomeTab"
         component={HistoryScreenStack}
         options={{
           headerShown: false,
           tabBarLabel: 'Home',
-          tabBarLabelStyle: {fontSize: 12, fontWeight: 700},
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarLabelStyle: { fontSize: 12, fontWeight: 700 },
+          tabBarIcon: ({ focused, color, size }) => (
             <HomeIcon
               name="home"
               size={30}
@@ -55,8 +56,8 @@ export default HomeScreen = () => {
         options={{
           headerShown: false,
           tabBarLabel: 'History',
-          tabBarLabelStyle: {fontSize: 12, fontWeight: 700},
-          tabBarIcon: ({focused, color, size}) => (
+          tabBarLabelStyle: { fontSize: 12, fontWeight: 700 },
+          tabBarIcon: ({ focused, color, size }) => (
             <HistoryIcon
               name="history"
               size={30}
@@ -65,7 +66,7 @@ export default HomeScreen = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="ProfileTab"
         component={ProfileScreenStack}
         options={{
@@ -80,7 +81,7 @@ export default HomeScreen = () => {
             />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };

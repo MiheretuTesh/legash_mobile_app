@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, ScrollView } from 'react-native';
 import Details from '../../components/Details';
-import {styles} from './index.style';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { styles } from './index.style';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // create a component
-const DetailsPage = ({navigation, route}) => {
-  const {patientData} = route.params;
+const DetailsPage = ({ navigation, route }) => {
+  const { patientData } = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector } from 'react-redux';
-
-// import AppDrawer from './AppNavigation/Drawer.Navigation';
-// import AuthDrawer from './AuthNavigation/Drawer.Navigation';
-import App from '../../App';
-import { AuthDrawer, AppDrawer } from './Drawer.Navigation';
+// import { AuthDrawer, AppDrawer } from './Drawer.Navigation';
+import { AppDrawer } from './Drawer.Navigation';
+import { AuthDrawer } from './Drawer.Navigation';
 
 const getToken = async () => {
   const token = await AsyncStorage.getItem('token');

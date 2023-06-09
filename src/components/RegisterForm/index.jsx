@@ -1,11 +1,12 @@
 //import liraries
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { styles } from './index.style';
 import SubmittedButton from '../SubmitButton';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Yup from 'yup';
-import DatePicker from '@react-native-community/datetimepicker';
+import RNPickerSelect from 'react-native-picker-select';
+import COLORS from '../../constants/colors';
 
 const ethiopianPhoneNumberRegex = /^(\+251)?[0-9]\d{9}$/;
 
@@ -73,14 +74,18 @@ const RegisterForm = ({ handleFormSubmit, isLoading, isSuccess, isError }) => {
       await validationSchema.validate(formData, { abortEarly: false });
 
       const formDataNew = {
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber,
+        am_et: {},
+        en_us: {
+          firstName: firstName,
+          lastName: lastName,
+          role: role,
+          gender: gender,
+        },
+        phonenumber: phoneNumber,
         email: email,
         password: password,
+        confirmPassword: confirmPassword,
         dateOfBirth: dateOfBirth,
-        role: role,
-        gender: gender,
       };
 
       handleFormSubmit(formDataNew);
@@ -171,29 +176,67 @@ const RegisterForm = ({ handleFormSubmit, isLoading, isSuccess, isError }) => {
           {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
         </View>
 
-        <View style={styles.inputContainer}>
+        <View style={[styles.inputContainer]}>
           <Text style={styles.labelTxt}>Date of Birth</Text>
-          <View style={styles.inputFieldContainer}>
+          <View
+            style={
+              ([styles.inputFieldContainer],
+              {
+                padding: 10,
+                backgroundColor: '#adb5bd',
+                borderRadius: 8,
+              })
+            }
+          >
             <TouchableOpacity onPress={handleDateFieldClick}>
-              <Text>{dateOfBirth.toDateString()}</Text>
+              <Text>
+                {dateOfBirth &&
+                  typeof dateOfBirth.toDateString === 'function' &&
+                  dateOfBirth.toDateString()}
+              </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.inputFieldContainer}>
-            {showDatePicker && ( // Render the date picker only when the flag is true
-              <DatePicker
-                style={{ width: 200 }}
-                value={dateOfBirth} // Use the updated state variable here
-                mode="date"
-                format="YYYY-MM-DD"
-                minDate="1900-01-01"
-                maxDate="2100-01-01"
-                onChange={handleDateChange} // Use the updated event handler
-              />
-            )}
-          </View>
+          {showDatePicker && (
+            <DatePicker
+              style={{
+                width: '100%',
+                color: COLORS.txtColor,
+              }}
+              value={dateOfBirth}
+              mode="date"
+              format="YYYY-MM-DD"
+              minDate="1900-01-01"
+              maxDate="2100-01-01"
+              onChange={handleDateChange}
+            />
+          )}
           {errors.dateOfBirth && (
             <Text style={{ color: 'red' }}>{errors.dateOfBirth}</Text>
           )}
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text style={styles.labelTxt}>Gender</Text>
+          <View
+            style={
+              ([styles.inputFieldContainer],
+              {
+                padding: 10,
+                backgroundColor: '#adb5bd',
+                borderRadius: 8,
+              })
+            }
+          >
+            <RNPickerSelect
+              value={gender}
+              onValueChange={(value) => setGender(value)}
+              items={[
+                { label: 'Male', value: 'Male' },
+                { label: 'Female', value: 'Female' },
+              ]}
+              style={{ color: COLORS.txtColor, backgroundColor: 'black' }} // Define your custom styles for the picker
+            />
+          </View>
         </View>
 
         <View style={styles.inputContainer}>
@@ -228,7 +271,7 @@ const RegisterForm = ({ handleFormSubmit, isLoading, isSuccess, isError }) => {
 
         <TouchableOpacity
           onPress={() => handleSubmit()}
-          // style={{paddingHorizontal: 50}}
+          style={{ paddingBottom: 20 }}
         >
           <SubmittedButton
             btnTitle={'Sin Up'}

@@ -12,7 +12,13 @@ const validationSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
-const LoginForm = ({ isSuccess, handleFormSubmit, isLoading, isError }) => {
+const LoginForm = ({
+  isSuccess,
+  handleFormSubmit,
+  isLoading,
+  isError,
+  emailNotVerified,
+}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
@@ -63,7 +69,7 @@ const LoginForm = ({ isSuccess, handleFormSubmit, isLoading, isError }) => {
           {errors.email && <Text style={{ color: 'red' }}>{errors.email}</Text>}
         </View>
 
-        <View style={styles.inputContainer}>
+        <View>
           <Text style={styles.labelTxt}>Password</Text>
           <View style={styles.inputFieldContainer}>
             <TextInput
@@ -78,9 +84,29 @@ const LoginForm = ({ isSuccess, handleFormSubmit, isLoading, isError }) => {
           )}
         </View>
 
+        <View
+          style={{
+            marginVertical: 10,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {emailNotVerified && (
+            <Text style={{ color: 'red', fontSize: 12 }}>
+              Email is Not Verified.
+            </Text>
+          )}
+        </View>
+
         <TouchableOpacity
           onPress={() => handleSubmit()}
           // style={{paddingHorizontal: 50}}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
           <SubmittedButton
             btnTitle={'Sin Up'}

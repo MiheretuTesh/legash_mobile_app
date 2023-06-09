@@ -12,6 +12,7 @@ import firebase from '../../utils/firebaseConfig';
 const LoginPage = ({ navigation }) => {
   const dispatch = useDispatch();
   const [token, setToken] = useState('');
+  const [emailNotVerified, setEmailNotVerified] = useState(false);
 
   const onLoginSuccess = (values) => {
     saveToken(token);
@@ -34,22 +35,6 @@ const LoginPage = ({ navigation }) => {
     onError: (error) => onLoginError(error),
   });
 
-  // const handleFormSubmit = (formData) => {
-  //   const { email, password } = formData; // Extract email and password from formData
-  //   console.log(formData);
-  //   firebase
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then((userCredential) => {
-  //       // Sign-in successful
-  //       console.log('User signed in successfully!', userCredential);
-  //     })
-  //     .catch((error) => {
-  //       // Handle sign-in errors
-  //       console.log('Sign-in error:', error);
-  //     });
-  //   // dispatch(loginUser(formData));
-  // };
   const handleFormSubmit = async (formData) => {
     const { email, password } = formData;
     console.log(formData);
@@ -58,11 +43,14 @@ const LoginPage = ({ navigation }) => {
         .auth()
         .signInWithEmailAndPassword(email, password);
       // Sign-in successful
-      console.log('User signed in successfully!', userCredential.user.uid);
 
-      dispatch(loginUser(userCredential.user.uid));
+      if (!userCredential?.user.emailVerified) {
+        console.log("User not registered or Didn't verify email");
+        setEmailNotVerified(true);
+      } else {
+        dispatch(loginUser(userCredential.user.uid));
+      }
     } catch (error) {
-      // Handle sign-in errors
       console.log('Sign-in error:', error);
     }
   };
@@ -71,6 +59,7 @@ const LoginPage = ({ navigation }) => {
     if (isLoginSuccess) {
       // saveToken(data?.data.token.authToken);
       navigation.navigate('Home');
+      setEmailNotVerified(false);
     }
   }, [loginData, isLoginSuccess]);
 
@@ -86,6 +75,7 @@ const LoginPage = ({ navigation }) => {
             isLoading={isLoginFetching}
             isSuccess={isLoginSuccess}
             isError={isLoginError}
+            emailNotVerified={emailNotVerified}
           />
         </View>
       </ScrollView>

@@ -36,8 +36,8 @@ const HomePage = ({ navigation }) => {
 
   const titles = [
     'Help Chala fight Leukemia',
-    'Help Abebe fight Leukemia',
-    'Help Aberash fight Leukemia',
+    'Lung Cancer',
+    'Diagnosed with Leukemia',
     'Help Eyosias fight Leukemia',
   ];
 

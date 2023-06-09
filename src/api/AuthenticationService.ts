@@ -3,16 +3,7 @@ import { LoginFormValues, RegistrationFormValues } from '../../types';
 import AxiosInstance from './AxiosInstance';
 
 export const register = (obj: RegistrationFormValues) => {
-  return AxiosInstance.post('auth/signup', {
-    email: obj.email,
-    firstName: obj.firstName,
-    lastName: obj.lastName,
-    role: '643fcc7d9cbbe5517bf42776',
-    password: obj.password,
-    phonenumber: obj.phoneNumber,
-    gender: obj.gender,
-    dateOfBirth: obj.dateOfBirth,
-  });
+  return AxiosInstance.post('auth/signup', obj);
 };
 
 export const login = (obj: LoginFormValues) => {

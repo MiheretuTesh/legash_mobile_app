@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  DevSettings,
-  Linking,
-} from 'react-native';
+import { Text, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import {
   DrawerContentScrollView,

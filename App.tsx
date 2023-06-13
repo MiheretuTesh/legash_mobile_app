@@ -5,7 +5,6 @@ import SplashScreen from 'react-native-splash-screen';
 import 'react-native-gesture-handler';
 import { StyleSheet, useColorScheme } from 'react-native';
 import AppNavigation from './src/navigation';
-import { getToken } from './src/utils/token.get.set';
 import { Provider } from 'react-redux';
 import store from './store';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -39,8 +38,6 @@ function App(): JSX.Element {
     const eventSource = new EventSource(
       'https://legashfund.onrender.com/api/v1/notifications/'
     );
-
-    console.log(eventSource, 'eventSource');
 
     eventSource.addEventListener('message', (event: any) => {
       const notification = JSON.parse(event.data);

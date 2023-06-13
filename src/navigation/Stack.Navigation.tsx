@@ -21,10 +21,26 @@ import YegnaCheckoutScreen from '../components/YegnaWebView';
 import HistoryScreenLanding from '../pages/HistoryScreenLanding';
 import SavedScreenLanding from '../pages/SavedScreenLanding';
 import ProfileScreenLanding from '../pages/ProfileScreenLanding';
+import LandingDetailsPage from '../pages/LandingDetailsScreen';
 
 const Stack = createStackNavigator();
 
 export const MainStackNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'white',
+        headerBackTitle: 'Back',
+      }}
+    >
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="DetailScreen" component={LandingDetailsPage} />
+    </Stack.Navigator>
+  );
+};
+
+export const AuthMainStackNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{

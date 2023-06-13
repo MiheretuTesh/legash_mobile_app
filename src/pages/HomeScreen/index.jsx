@@ -27,13 +27,6 @@ const HomePage = ({ navigation }) => {
 
   // const {dataCampaigns, isLoadingCampaigns, isSuccess} = useGetCampaigns({});
 
-  const imgs = [
-    'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80',
-    'https://images.unsplash.com/photo-1588349482083-036b31c6eca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  ];
-
   const titles = [
     'Help Chala fight Leukemia',
     'Lung Cancer',
@@ -64,9 +57,6 @@ const HomePage = ({ navigation }) => {
           }}
         >
           <TextInput
-            // onChangeText={onChangeNumber}
-            // value={number}
-            // keyboardType="numeric"
             placeholder="Search"
             placeholderTextColor={'black'}
             style={{ paddingHorizontal: 20, color: 'black' }}
@@ -83,17 +73,13 @@ const HomePage = ({ navigation }) => {
                   <TouchableOpacity
                     onPress={() => {
                       navigation.navigate('DetailScreen', {
-                        patientData: patient,
+                        campaignsData: patient,
                       });
                     }}
                     key={index}
                     style={{ marginVertical: 10 }}
                   >
-                    <HistoryCard
-                      patient={patient}
-                      img={imgs[index]}
-                      title={titles[index]}
-                    />
+                    <HistoryCard patient={patient} title={titles[index]} />
                   </TouchableOpacity>
                 ))
               ) : (

@@ -25,8 +25,9 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (uid, thunkAPI) => {
     try {
+      console.log(uid, 'uid uid uid');
       const { data } = await axios.post(`${config.BASE_URI}/auth/login`, {
-        uid: uid,
+        uid: 'zG7DFkmxjidQzVXXzf2MdBi2SD22',
       });
       saveToken(data?.token);
       // storeAdmin(data?.role.roleName);
@@ -90,6 +91,10 @@ const initialState = {
   isLoginError: false,
   registerErrorMessage: '',
   loginErrorMessage: '',
+
+  isLogoutFetching: false,
+  isLogoutSuccess: false,
+  isLogoutFailed: false,
 };
 
 const authSlice = createSlice({
@@ -153,17 +158,24 @@ const authSlice = createSlice({
 
     [logoutUser.pending]: (state) => {
       state.isLoginFetching = true;
+      state.isLogoutFetching = true;
     },
     [logoutUser.fulfilled]: (state, { payload }) => {
       state.isLoginFetching = false;
       state.isLoginSuccess = false;
       state.loginData = '';
       state.token = '';
+      state.isLogoutSuccess = true;
+      state.isLogoutFetching = false;
+      state.isLogoutFailed = false;
     },
     [logoutUser.rejected]: (state, { payload }) => {
       state.isLoginFetching = false;
       state.isLoginError = true;
       state.loginErrorMessage = payload;
+      state.isLogoutSuccess = false;
+      state.isLogoutFetching = false;
+      state.isLogoutFailed = true;
     },
   },
 });

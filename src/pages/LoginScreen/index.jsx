@@ -37,12 +37,12 @@ const LoginPage = ({ navigation }) => {
 
   const handleFormSubmit = async (formData) => {
     const { email, password } = formData;
-    console.log(formData);
+    setEmailNotVerified(false);
+
     try {
       const userCredential = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
-      // Sign-in successful
 
       if (!userCredential?.user.emailVerified) {
         console.log("User not registered or Didn't verify email");

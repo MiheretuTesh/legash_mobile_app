@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   MainStackNavigator,
+  AuthMainStackNavigator,
   HistoryStack,
   ProfileStack,
   AuthHistoryStack,
@@ -133,7 +134,7 @@ export const AuthTabNavigation = () => {
     >
       <Tab.Screen
         name="HomeTab"
-        component={MainStackNavigator}
+        component={AuthMainStackNavigator}
         options={{
           headerShown: false,
           tabBarLabel: ({ focused, color }) => (

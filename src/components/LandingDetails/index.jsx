@@ -10,13 +10,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import DonateButton from '../DonateButton';
 import DonatePopUp from '../DonatePopUp';
 
-const Details = ({ campaignsData, handleNavigate }) => {
+const LandingDetails = ({ patientData, handleNavigate }) => {
   const refRBSheet = useRef();
   const navigation = useNavigation();
   const [imageIndex, setImageIndex] = useState(0);
-  const [backgroundImg, setBackgroundImage] = useState(
-    campaignsData.coverImage
-  );
+  const [backgroundImg, setBackgroundImage] = useState(patientData.coverImage);
 
   const imgs = [
     'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80',
@@ -58,8 +56,8 @@ const Details = ({ campaignsData, handleNavigate }) => {
           style={styles.backgroundImg}
         >
           <View style={styles.backgroundImgView}>
-            {campaignsData.images.length > 0
-              ? campaignsData.images.map((image, index) => {
+            {patientData.images.length > 0
+              ? patientData.images.map((image, index) => {
                   const currentIndex = imageIndex;
                   return (
                     <TouchableOpacity
@@ -131,7 +129,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
             <Text
               style={{ color: COLORS.mainColor, fontWeight: 500, fontSize: 18 }}
             >
-              {campaignsData.targetFunding.toLocaleString('en-US')} birr
+              {patientData.targetFunding.toLocaleString('en-US')} birr
             </Text>
           </View>
           <View
@@ -150,7 +148,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
             <Text
               style={{ color: COLORS.mainColor, fontWeight: 500, fontSize: 18 }}
             >
-              {campaignsData.currentFundedAmount.toLocaleString('en-US')} birr
+              {patientData.currentFundedAmount.toLocaleString('en-US')} birr
             </Text>
           </View>
           <View
@@ -171,7 +169,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
               style={{ color: COLORS.redColor, fontWeight: 500, fontSize: 18 }}
             >
               {(
-                campaignsData.targetFunding - campaignsData.currentFundedAmount
+                patientData.targetFunding - patientData.currentFundedAmount
               ).toLocaleString('en-US')}
               birr
             </Text>
@@ -192,7 +190,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
           >
-            {campaignsData.contactName}
+            {patientData.contactName}
           </Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
@@ -204,7 +202,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
           >
-            {campaignsData.contactPhoneNumber}
+            {patientData.contactPhoneNumber}
           </Text>
         </View>
       </View>
@@ -216,7 +214,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
         <Text
           style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
         >
-          {campaignsData.diagnosis[0]}
+          {patientData.diagnosis[0]}
         </Text>
       </View>
       <View style={{ height: 20 }}></View>
@@ -227,13 +225,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
           alignItems: 'center',
         }}
       >
-        <DonatePopUp refRBSheet={refRBSheet} handleNavigate={handleNavigate} />
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={() => {
-            refRBSheet.current.open();
-          }}
-        >
+        <TouchableOpacity activeOpacity={1} onPress={handleNavigate}>
           <DonateButton />
         </TouchableOpacity>
       </View>
@@ -241,4 +233,4 @@ const Details = ({ campaignsData, handleNavigate }) => {
   );
 };
 
-export default Details;
+export default LandingDetails;

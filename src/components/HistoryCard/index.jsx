@@ -4,12 +4,12 @@ import { styles } from './index.style';
 import Slider from '@react-native-community/slider';
 import COLORS from '../../constants/colors';
 
-const HistoryCard = ({ patient, img, title }) => {
+const HistoryCard = ({ patient, title }) => {
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: patient.imgUri ? patient.imgUri : img,
+          uri: patient.coverImage ? patient.coverImage : '',
         }}
         style={styles.historyCardImg}
       />

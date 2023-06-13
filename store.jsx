@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './src/features/auth/auth.Slice';
 import campaignReducer from './src/features/campaign/campaign.Slice';
 import transactionReducer from './src/features/transaction/transaction.Slice';

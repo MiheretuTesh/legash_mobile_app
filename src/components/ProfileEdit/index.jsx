@@ -11,10 +11,13 @@ import { editUser } from '../../features/user/user.Slice';
 import { useSelector, useDispatch } from 'react-redux';
 // import { ToastContainer, toast } from 'react-native-toast-message';
 import Toast from '../ToastComponent';
-// create a component
+import { Picker } from '@react-native-picker/picker';
+
 const ProfileEdit = ({ userDataLoading, userData }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  console.log(userData, ' userData userData userData userData');
 
   const [id, setId] = useState('');
   const [name, setName] = useState('');
@@ -219,11 +222,14 @@ const ProfileEdit = ({ userDataLoading, userData }) => {
                 <View style={{ width: 10 }}></View>
 
                 <View style={styles.inputFieldContainer}>
-                  <TextInput
+                  <Picker
+                    selectedValue={gender}
+                    onValueChange={setGender}
                     style={styles.input}
-                    value={gender}
-                    onChangeText={setGender} // Set the gender using setGender function
-                  />
+                  >
+                    <Picker.Item label="Male" value="male" />
+                    <Picker.Item label="Female" value="female" />
+                  </Picker>
                 </View>
               </View>
               <TouchableOpacity
@@ -236,13 +242,8 @@ const ProfileEdit = ({ userDataLoading, userData }) => {
                   isError={editUserFailed}
                 />
               </TouchableOpacity>
-              <Toast
-                message="This is a custom toast message"
-                onToastHidden={handleToastHidden}
-              />
             </View>
           </View>
-          {/* <ToastContainer /> */}
         </>
       ) : (
         <LoadingComponent />

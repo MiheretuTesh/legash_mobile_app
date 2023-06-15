@@ -9,8 +9,6 @@ import SubmittedButton from '../SubmitButton';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import { editUser } from '../../features/user/user.Slice';
 import { useSelector, useDispatch } from 'react-redux';
-// import { ToastContainer, toast } from 'react-native-toast-message';
-import Toast from '../ToastComponent';
 import { Picker } from '@react-native-picker/picker';
 
 const ProfileEdit = ({ userDataLoading, userData }) => {
@@ -48,38 +46,6 @@ const ProfileEdit = ({ userDataLoading, userData }) => {
       });
   }, [navigation, userData]);
 
-  const showToast = (txt) => {
-    // Logic to show the toast
-    console.log('Toast shown');
-  };
-
-  const handleToastHidden = () => {
-    // Logic to handle the toast being hidden
-    console.log('Toast hidden');
-  };
-
-  // const showToast = (title) => {
-  //   toast.show({
-  //     type: 'success',
-  //     position: 'bottom',
-  //     text1: 'Success',
-  //     text2: title,
-  //     visibilityTime: 3000,
-  //     topOffset: 30,
-  //     bottomOffset: 40,
-  //   });
-  // };
-
-  useEffect(() => {
-    if (editUserSuccess === true) {
-      showToast('Successfully Edited');
-    }
-
-    if (editUserFailed === true) {
-      showToast('Failed to Edit');
-    }
-  }, [editUserSuccess, editUserFailed]);
-
   const handleEditUserProfile = () => {
     const userName = name.split(' ');
 
@@ -87,15 +53,36 @@ const ProfileEdit = ({ userDataLoading, userData }) => {
     const lastName = userName[1];
 
     const formData = {
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
+      am_et: {
+        firstName: 'አበራ',
+        lastName: 'ሀብታሙ',
+        bankAccounts: [
+          {
+            accountHolderName: 'አበራ ሀብታሙ',
+            accountNumber: '1000123456789',
+            bankName: 'ንግድ ባንክ',
+            country: 'ኢትዮጵያ',
+          },
+        ],
+        gender: 'ሴት',
+      },
+      en_us: {
+        firstName: `${firstName}`,
+        lastName: `${lastName}`,
+        bankAccounts: [
+          {
+            accountHolderName: `${firstName} ${lastName}`,
+            accountNumber: '1000123456789',
+            bankName: 'CBE',
+            country: 'Ethiopia',
+          },
+        ],
+        gender: gender,
+      },
       email: email,
       phonenumber: phone,
-      gender: gender,
     };
-
-    dispatch(editUser(formData));
+    dispatch(editUser({ formData: formData, id: userData._id }));
   };
 
   return (

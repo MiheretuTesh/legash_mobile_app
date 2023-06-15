@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, Image } from 'react-native';
 import { styles } from './index.style';
 import { useNavigation } from '@react-navigation/native';
 import COLORS from '../../constants/colors';
+import moment from 'moment';
 
 import CloseIcon from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -12,6 +13,7 @@ import DonatePopUp from '../DonatePopUp';
 
 const HistoryDetails = ({ donationData }) => {
   const refRBSheet = useRef();
+  console.log(donationData, 'donationData');
   const navigation = useNavigation();
   const [imageIndex, setImageIndex] = useState(0);
   // const [backgroundImg, setBackgroundImage] = useState(donationData?.images[0]);
@@ -91,7 +93,7 @@ const HistoryDetails = ({ donationData }) => {
 
       <View style={{ height: 20 }}></View>
 
-      <View>
+      <View style={{ paddingHorizontal: 20 }}>
         <Text style={styles.heroTxt}>Donation History</Text>
         <Text style={styles.heroTxt}>Transaction</Text>
         <View
@@ -110,7 +112,7 @@ const HistoryDetails = ({ donationData }) => {
                     fontSize: 16,
                   }}
                 >
-                  Donors Name
+                  Donor's Name
                 </Text>
                 <View
                   style={{
@@ -162,6 +164,23 @@ const HistoryDetails = ({ donationData }) => {
                   }}
                 >
                   Email
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Date
                 </Text>
                 <View
                   style={{
@@ -240,6 +259,23 @@ const HistoryDetails = ({ donationData }) => {
                   }}
                 ></View>
               </View>
+              <View style={styles.txtContainer}>
+                <Text
+                  style={{
+                    color: COLORS.greyColor,
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  {moment(donationData.createdAt).format('MMMM Do YYYY')}
+                </Text>
+                <View
+                  style={{
+                    height: 40,
+                    width: 50,
+                  }}
+                ></View>
+              </View>
             </View>
           </View>
         </View>
@@ -247,7 +283,7 @@ const HistoryDetails = ({ donationData }) => {
 
       <View style={{ height: 20 }}></View>
 
-      <View>
+      <View style={{ paddingHorizontal: 20 }}>
         <Text style={styles.heroTxt}>Campaigns Details</Text>
         <Text style={styles.heroTxt}>Campaign</Text>
         <View
@@ -283,7 +319,7 @@ const HistoryDetails = ({ donationData }) => {
                     fontSize: 16,
                   }}
                 >
-                  Phone Number
+                  Payment Method
                 </Text>
                 <View
                   style={{
@@ -300,7 +336,7 @@ const HistoryDetails = ({ donationData }) => {
                     fontSize: 16,
                   }}
                 >
-                  Email
+                  Transaction Type
                 </Text>
                 <View
                   style={{
@@ -336,7 +372,7 @@ const HistoryDetails = ({ donationData }) => {
                     fontSize: 16,
                   }}
                 >
-                  {`${donationData?.donorId.am_et.firstName} ${donationData?.donorId.am_et.lastName}`}
+                  {donationData?.paymentMethod}
                 </Text>
                 <View
                   style={{
@@ -353,24 +389,7 @@ const HistoryDetails = ({ donationData }) => {
                     fontSize: 16,
                   }}
                 >
-                  {`${donationData?.donorId.phonenumber}`}
-                </Text>
-                <View
-                  style={{
-                    height: 40,
-                    width: 50,
-                  }}
-                ></View>
-              </View>
-              <View style={styles.txtContainer}>
-                <Text
-                  style={{
-                    color: COLORS.greyColor,
-                    fontWeight: 500,
-                    fontSize: 16,
-                  }}
-                >
-                  {`${donationData?.donorId.email}`}
+                  {`${donationData?.transactionType}`}
                 </Text>
                 <View
                   style={{

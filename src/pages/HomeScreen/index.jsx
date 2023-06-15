@@ -4,14 +4,16 @@ import HistoryCard from '../../components/HistoryCard';
 import { styles } from './index.style';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import {useGetCampaigns} from '../../hooks/useGetCampaigns';
 import { useDispatch, useSelector } from 'react-redux';
 import MenuIcon from 'react-native-vector-icons/Feather';
 import { getCampaigns } from '../../features/campaign/campaign.Slice';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import { COLORS } from '../../constants/colors';
+
 const HomePage = ({ navigation }) => {
   const dispatch = useDispatch();
+  const [searchText, setSearchText] = useState('');
+  const [filteredCampaigns, setFilteredCampaigns] = useState([]);
 
   useEffect(() => {
     dispatch(getCampaigns());
@@ -25,14 +27,14 @@ const HomePage = ({ navigation }) => {
     campaignsDataError,
   } = useSelector((state) => state.campaign);
 
-  // const {dataCampaigns, isLoadingCampaigns, isSuccess} = useGetCampaigns({});
-
-  const titles = [
-    'Help Chala fight Leukemia',
-    'Lung Cancer',
-    'Diagnosed with Leukemia',
-    'Help Eyosias fight Leukemia',
-  ];
+  useEffect(() => {
+    if (campaignsDataSuccess) {
+      const filtered = campaignsData.filter((campaign) =>
+        campaign.campaignTitle.includes(searchText)
+      );
+      setFilteredCampaigns(filtered);
+    }
+  }, [campaignsData, searchText]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,6 +62,8 @@ const HomePage = ({ navigation }) => {
             placeholder="Search"
             placeholderTextColor={'black'}
             style={{ paddingHorizontal: 20, color: 'black' }}
+            value={searchText}
+            onChangeText={setSearchText}
           />
         </View>
         <ScrollView
@@ -68,18 +72,18 @@ const HomePage = ({ navigation }) => {
         >
           <View>
             {campaignsDataSuccess ? (
-              campaignsData?.length !== 0 ? (
-                campaignsData?.map((patient, index) => (
+              filteredCampaigns?.length !== 0 ? (
+                filteredCampaigns?.map((campaign, index) => (
                   <TouchableOpacity
                     onPress={() => {
                       navigation.navigate('DetailScreen', {
-                        campaignsData: patient,
+                        campaignsData: campaign,
                       });
                     }}
                     key={index}
                     style={{ marginVertical: 10 }}
                   >
-                    <HistoryCard patient={patient} title={titles[index]} />
+                    <HistoryCard campaign={campaign} />
                   </TouchableOpacity>
                 ))
               ) : (
@@ -95,5 +99,4 @@ const HomePage = ({ navigation }) => {
   );
 };
 
-//make this component available to the app
 export default HomePage;

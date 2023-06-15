@@ -4,17 +4,17 @@ import { styles } from './index.style';
 import Slider from '@react-native-community/slider';
 import COLORS from '../../constants/colors';
 
-const HistoryCard = ({ patient, title }) => {
+const HistoryCard = ({ campaign }) => {
   return (
     <View style={styles.container}>
       <Image
         source={{
-          uri: patient.coverImage ? patient.coverImage : '',
+          uri: campaign.coverImage ? campaign.coverImage : '',
         }}
         style={styles.historyCardImg}
       />
       <View style={styles.historyCardContent}>
-        <Text style={styles.historyCardHeroTxt}>{patient.campaignTitle}</Text>
+        <Text style={styles.historyCardHeroTxt}>{campaign.campaignTitle}</Text>
         <View style={styles.progressContainer}>
           <View
             style={{
@@ -28,7 +28,7 @@ const HistoryCard = ({ patient, title }) => {
             <View
               style={{
                 width: `${Math.round(
-                  (patient.currentFundedAmount / patient.targetFunding) * 100
+                  (campaign.currentFundedAmount / campaign.targetFunding) * 100
                 )}%`,
                 height: 5,
                 backgroundColor: COLORS.mainColor,
@@ -52,7 +52,7 @@ const HistoryCard = ({ patient, title }) => {
           <View>
             <Text style={{ color: '#333' }}>
               {Math.round(
-                (patient.currentFundedAmount / patient.targetFunding) * 100
+                (campaign.currentFundedAmount / campaign.targetFunding) * 100
               )}
               %
             </Text>
@@ -62,14 +62,14 @@ const HistoryCard = ({ patient, title }) => {
           <View>
             <Text style={styles.cardFooterTitle}>Target</Text>
             <Text style={styles.cardFooterAmountActive}>
-              {patient.targetFunding.toLocaleString('en-US')}
+              {campaign.targetFunding.toLocaleString('en-US')}
             </Text>
           </View>
           <View style={styles.separator}></View>
           <View>
             <Text style={styles.cardFooterTitle}>Raised</Text>
             <Text style={styles.cardFooterAmountActive}>
-              {patient.currentFundedAmount?.toLocaleString('en-US')} birr
+              {campaign.currentFundedAmount?.toLocaleString('en-US')} birr
             </Text>
           </View>
           <View style={styles.separator}></View>
@@ -77,7 +77,7 @@ const HistoryCard = ({ patient, title }) => {
             <Text style={styles.cardFooterTitle}>To Go</Text>
             <Text style={styles.cardFooterAmountInActive}>
               {(
-                patient.targetFunding - patient.currentFundedAmount
+                campaign.targetFunding - campaign.currentFundedAmount
               ).toLocaleString('en-US')}
               birr
             </Text>

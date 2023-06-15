@@ -52,13 +52,13 @@ export const getUser = createAsyncThunk('/user', async (id, thunkAPI) => {
 
 export const editUser = createAsyncThunk(
   '/user',
-  async (formData, thunkAPI) => {
+  async ({ formData: formData, id: id }, thunkAPI) => {
     console.log(formData, 'HEY');
     try {
       const token = await getToken();
 
       const { data } = await axios.patch(
-        `${config.BASE_URI}/users/${formData.id}`,
+        `${config.BASE_URI}/users/${id}`,
         formData,
         {
           headers: {
@@ -66,9 +66,9 @@ export const editUser = createAsyncThunk(
           },
         }
       );
-
       return data;
     } catch (err) {
+      console.log(err);
       return thunkAPI.rejectWithValue(err.response.data);
     }
   }

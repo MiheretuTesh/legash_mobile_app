@@ -69,25 +69,39 @@ const HomePage = ({ navigation }) => {
         <ScrollView
           keyboardDismissMode="on-drag"
           onScrollBeginDrag={() => Keyboard.dismiss()}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
         >
           <View>
             {campaignsDataSuccess ? (
               filteredCampaigns?.length !== 0 ? (
-                filteredCampaigns?.map((campaign, index) => (
-                  <TouchableOpacity
-                    onPress={() => {
-                      navigation.navigate('DetailScreen', {
-                        campaignsData: campaign,
-                      });
-                    }}
-                    key={index}
-                    style={{ marginVertical: 10 }}
-                  >
-                    <HistoryCard campaign={campaign} />
-                  </TouchableOpacity>
-                ))
+                filteredCampaigns?.map((campaign, index) =>
+                  campaign.status === 'Active' ? (
+                    <TouchableOpacity
+                      onPress={() => {
+                        navigation.navigate('DetailScreen', {
+                          campaignsData: campaign,
+                        });
+                      }}
+                      key={index}
+                      style={{ marginVertical: 10 }}
+                    >
+                      <HistoryCard campaign={campaign} />
+                    </TouchableOpacity>
+                  ) : (
+                    ''
+                  )
+                )
               ) : (
-                <Text>No Campaign</Text>
+                <Text
+                  style={{
+                    color: 'black',
+                    fontStyle: 'italic',
+                    paddingHorizontal: 10,
+                  }}
+                >
+                  No Campaign
+                </Text>
               )
             ) : (
               <LoadingComponent size={'large'} loadingColor="#8D8D8D" />

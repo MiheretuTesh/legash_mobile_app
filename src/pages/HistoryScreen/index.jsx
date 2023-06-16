@@ -35,7 +35,11 @@ const HistoryScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <ScrollView>
+        <ScrollView
+          style={{ height: '100%', marginBottom: 200 }}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
           <View>
             {transactionDataSuccess ? (
               transactionData?.data?.length > 0 ? (

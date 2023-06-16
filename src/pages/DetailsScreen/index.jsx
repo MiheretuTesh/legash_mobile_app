@@ -29,7 +29,10 @@ const DetailsPage = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+      >
         <Details
           campaignsData={campaignsData}
           handleNavigate={handleNavigate}

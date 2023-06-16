@@ -76,7 +76,7 @@ export const AppTabNavigation = () => {
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="SavedTab"
         component={SavedStack}
         options={{
@@ -94,7 +94,7 @@ export const AppTabNavigation = () => {
             />
           ),
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="ProfileTab"
@@ -170,7 +170,7 @@ export const AuthTabNavigation = () => {
           ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="SavedTab"
         component={AuthSavedStack}
         options={{
@@ -188,7 +188,7 @@ export const AuthTabNavigation = () => {
             />
           ),
         }}
-      />
+      /> */}
       <Tab.Screen
         name="ProfileTab"
         component={AuthProfileStack}

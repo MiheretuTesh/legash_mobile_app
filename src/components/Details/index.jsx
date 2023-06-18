@@ -18,13 +18,6 @@ const Details = ({ campaignsData, handleNavigate }) => {
     campaignsData.coverImage
   );
 
-  const imgs = [
-    'https://images.unsplash.com/photo-1548102245-c79dbcfa9f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=996&q=80',
-    'https://images.unsplash.com/photo-1588349482083-036b31c6eca3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1537280788811-0cc64e2c028b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
-    'https://images.unsplash.com/photo-1606166187734-a4cb74079037?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-  ];
-
   useEffect(() => {
     navigation.getParent()?.setOptions({
       tabBarStyle: {
@@ -58,7 +51,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
           style={styles.backgroundImg}
         >
           <View style={styles.backgroundImgView}>
-            {campaignsData.images.length > 0
+            {/* {campaignsData.images?.length > 0
               ? campaignsData.images.map((image, index) => {
                   const currentIndex = imageIndex;
                   return (
@@ -93,7 +86,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
                         setBackgroundImage(image);
                       }}
                     >
-                      {/* <Image
+                      <Image
                         source={{ uri: image }}
                         style={{
                           width: 60,
@@ -103,10 +96,10 @@ const Details = ({ campaignsData, handleNavigate }) => {
                           borderColor: imageIndex === index && COLORS.mainColor,
                           elevation: 10,
                         }}
-                      /> */}
+                      />
                     </TouchableOpacity>
                   );
-                })}
+                })} */}
           </View>
         </ImageBackground>
       </View>
@@ -114,6 +107,19 @@ const Details = ({ campaignsData, handleNavigate }) => {
       <View style={{ height: 20 }}></View>
 
       <View>
+        <Text
+          style={
+            ([styles.heroTxt],
+            {
+              fontSize: 20,
+              color: COLORS.txtColor,
+              fontWeight: '600',
+              paddingBottom: 15,
+            })
+          }
+        >
+          {campaignsData.campaignTitle}
+        </Text>
         <Text style={styles.heroTxt}>Campaign Status</Text>
         <View
           style={{
@@ -150,7 +156,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
             <Text
               style={{ color: COLORS.mainColor, fontWeight: 500, fontSize: 18 }}
             >
-              {campaignsData.currentFundedAmount.toLocaleString('en-US')} birr
+              {campaignsData.currentFundedAmount?.toLocaleString('en-US')} birr
             </Text>
           </View>
           <View
@@ -187,7 +193,19 @@ const Details = ({ campaignsData, handleNavigate }) => {
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
           >
-            Name - Abebe Chala
+            Name - {campaignsData.patientName}
+          </Text>
+          <Text
+            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
+          >
+            {campaignsData.contactName}
+          </Text>
+        </View>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text
+            style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
+          >
+            Phone - 0912983487
           </Text>
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
@@ -199,7 +217,7 @@ const Details = ({ campaignsData, handleNavigate }) => {
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}
           >
-            Contact -0912211221
+            Approved By - {campaignsData.hospitalName}
           </Text>
           <Text
             style={{ fontSize: 16, color: COLORS.greyColor, fontWeight: 500 }}

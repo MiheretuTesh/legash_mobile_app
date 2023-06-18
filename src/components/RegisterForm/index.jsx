@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Yup from 'yup';
 import RNPickerSelect from 'react-native-picker-select';
 import COLORS from '../../constants/colors';
+import DatePicker from '@react-native-community/datetimepicker';
 
 const ethiopianPhoneNumberRegex = /^(\+251)?[0-9]\d{9}$/;
 
@@ -246,6 +247,7 @@ const RegisterForm = ({ handleFormSubmit, isLoading, isSuccess, isError }) => {
               style={styles.input}
               value={password}
               onChangeText={(value) => setPassword(value)}
+              secureTextEntry={true}
               // keyboardType="numeric"
             />
           </View>
@@ -261,6 +263,7 @@ const RegisterForm = ({ handleFormSubmit, isLoading, isSuccess, isError }) => {
               style={styles.input}
               value={confirmPassword}
               onChangeText={(value) => setConfirmPassword(value)}
+              secureTextEntry={true}
               // keyboardType="numeric"
             />
           </View>

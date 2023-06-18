@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUserTransaction } from '../../features/transaction/transaction.Slice';
+import { getCampaign } from '../../api/CampaignService';
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import MenuIcon from 'react-native-vector-icons/Feather';
 import COLORS from '../../constants/colors';
@@ -34,10 +35,14 @@ const HistoryScreen = ({ navigation }) => {
           </View>
         </TouchableOpacity>
 
-        <ScrollView>
+        <ScrollView
+          style={{ height: '100%', marginBottom: 200 }}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
           <View>
             {transactionDataSuccess ? (
-              transactionData?.data.length > 0 ? (
+              transactionData?.data?.length > 0 ? (
                 transactionData?.data.map((donation, index) => (
                   <TouchableOpacity
                     key={index}
@@ -48,7 +53,10 @@ const HistoryScreen = ({ navigation }) => {
                       });
                     }}
                   >
-                    <MyHistoryCard donation={donation} />
+                    <MyHistoryCard
+                      donation={donation}
+                      title={donation?.campaignId?.am_et.campaignTitle}
+                    />
                   </TouchableOpacity>
                 ))
               ) : (

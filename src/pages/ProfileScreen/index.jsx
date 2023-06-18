@@ -17,8 +17,13 @@ const ProfilePage = ({ navigation }) => {
     (state) => state.auth
   );
 
-  const handleHistoryNavigate = () => {
-    navigation.navigate('HistoryTab');
+  const handleHistoryNavigate = (str) => {
+    if (str === 'history') {
+      navigation.navigate('HistoryTab');
+    }
+    if (str === 'home') {
+      navigation.navigate('HomeTab');
+    }
   };
 
   const handleProfileEditNavigation = () => {

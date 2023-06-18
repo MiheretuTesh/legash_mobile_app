@@ -3,12 +3,20 @@ import { View, ScrollView } from 'react-native';
 import Details from '../../components/Details';
 import { styles } from './index.style';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getCurrentUser } from '../../features/auth/auth.Slice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const DetailsPage = ({ navigation, route }) => {
+  const dispatch = useDispatch();
   const { campaignsData } = route.params;
 
+  // const {userData}
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
+
   const handleNavigate = (payment) => {
-    console.log('Hello');
     if (payment === 'chapa') {
       navigation.navigate('ChapaPaymentScreen', {
         campaignData: campaignsData,

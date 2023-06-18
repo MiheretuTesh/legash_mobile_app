@@ -22,6 +22,7 @@ const LoginForm = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async () => {
     const formData = {
@@ -77,6 +78,7 @@ const LoginForm = ({
               style={styles.input}
               value={password}
               onChangeText={(value) => setPassword(value)}
+              secureTextEntry={!showPassword}
             />
           </View>
           {errors.password && (

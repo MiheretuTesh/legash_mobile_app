@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   ScrollView,
+  BackHandler,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
@@ -17,6 +18,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from '../../features/user/user.Slice';
 import { createPayment } from '../../features/payment/payment.Slice';
+import Restart from 'react-native-restart';
 
 const ethiopianPhoneNumberRegex = /^(\+251)?[0-9]\d{9}$/;
 
@@ -39,6 +41,18 @@ function generateRandomAlphabet() {
 
 const ChapaCheckoutScreen = ({ route }) => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      () => {
+        Restart.Restart();
+        return true; // Prevent default back button behavior
+      }
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   const { campaignData } = route.params;
 

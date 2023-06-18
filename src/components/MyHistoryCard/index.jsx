@@ -4,15 +4,16 @@ import { styles } from './index.style';
 import moment from 'moment';
 import COLORS from '../../constants/colors';
 
-const MyHistoryCard = ({ donation }) => {
+const MyHistoryCard = ({ donation, title }) => {
+  console.log(donation, 'donation donation donation');
   return (
     <View style={styles.container}>
       <View style={styles.historyCardContent}>
         <Text style={styles.historyCardHeroTxt}>
-          {donation?.title ? donation?.title : 'Help Sally Get Better'}
+          {title ? title : 'Donation History'}
         </Text>
         <Text style={{ fontSize: 12, color: COLORS.txtColor }}>
-          {moment('2023-06-15').format('MMMM Do YYYY')}
+          {moment(donation.createdAt).format('MMMM Do YYYY')}
         </Text>
         <View style={styles.cardFooter}>
           <View>

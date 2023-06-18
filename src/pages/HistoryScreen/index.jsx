@@ -53,7 +53,10 @@ const HistoryScreen = ({ navigation }) => {
                       });
                     }}
                   >
-                    <MyHistoryCard donation={donation} />
+                    <MyHistoryCard
+                      donation={donation}
+                      title={donation?.campaignId?.am_et.campaignTitle}
+                    />
                   </TouchableOpacity>
                 ))
               ) : (
